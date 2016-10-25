@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package controlador.pedido;
-import modelo.GestionarServicios;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Plato;
 
 /**
@@ -21,13 +23,13 @@ public class BuscarPlato extends GestionarPedidosComando{
         int platoid = Integer.parseInt(request.getParameter("platoid"));                
         try{
             GestionarServicios gestionarPedidosServicio = new GestionarServicios();
-            Plato plato = gestionarPedidosServicio.buscar(platoid);
+            Plato plato = gestionarPedidosServicio.buscarPlato(platoid);
             if(plato != null){
                 request.setAttribute("plato", plato);
-                url_forward = "c1_presentacion/vista/PaginaAgregarPlato.jsp";
+                url_forward = "vista/PaginaAgregarPlato.jsp";
             }
             else{
-                request.setAttribute("mensaje", "Registro no existe");
+                request.setAttribute("mensaje", Mensaje.REGISTRO_NO_EXISTE);
             }
         }
         catch(Exception e){

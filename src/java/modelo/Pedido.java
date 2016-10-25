@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modelo;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,26 +12,38 @@ import java.util.List;
 
 /**
  *
- * @author Lain
+ * @author
+ * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public class Pedido {
+
     private int pedidoid;
     private Date fecha;
     private String estado;
     private Mesa mesa;
+    private Persona cliente;
+    private Usuario usuario;
     private List<LineaDePedido> lineasDePedido;
     public static final String ABIERTO = "Abierto";
     public static final String CERRADO = "Cerrado";
     public static final String ANULADO = "Anulado";
 
-    // constructor usado desde la capa de presentación
+    public Pedido(){
+        pedidoid = 0;
+        fecha = Date.valueOf(LocalDate.now());
+        estado = ABIERTO;
+        lineasDePedido = new ArrayList();
+    }
+    
+    
+// constructor usado desde la capa de presentación
     public Pedido(Mesa mesa) {
         pedidoid = 0;
-        this.mesa = mesa;        
+        this.mesa = mesa;
         fecha = Date.valueOf(LocalDate.now());
-    //fecha = Date.valueOf(String.format("%1$tY-%1$tm-%1$te", new java.util.Date()));
+        //fecha = Date.valueOf(String.format("%1$tY-%1$tm-%1$te", new java.util.Date()));
         estado = ABIERTO;
-        lineasDePedido = new ArrayList();        
+        lineasDePedido = new ArrayList();
     }
 
     // constructor usado desde la capa de persistencia
@@ -76,79 +89,100 @@ public class Pedido {
     public List<LineaDePedido> getLineasDePedido() {
         return lineasDePedido;
     }
+
+    public Persona getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Persona cliente) {
+        this.cliente = cliente;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     // regla de negocio
-    public void agregarLineaDePedido(Plato plato, int cantidad) throws Exception{
+    public void agregarLineaDePedido(Plato plato, int cantidad) throws Exception {
         boolean esNuevoPlato = true;
-        for(LineaDePedido lineaDePedidoExistente : lineasDePedido){
+        for (LineaDePedido lineaDePedidoExistente : lineasDePedido) {
             Plato platoexistente = lineaDePedidoExistente.getPlato();
-            if(plato.getPlatoid() == platoexistente.getPlatoid()){                
+            if (plato.getPlatoid() == platoexistente.getPlatoid()) {
                 lineaDePedidoExistente.validarCantidadAgregada(cantidad);
-                lineaDePedidoExistente.agregarCantidad(cantidad);                 
+                lineaDePedidoExistente.agregarCantidad(cantidad);
                 esNuevoPlato = false;
                 break;
             }
         }
-        if(esNuevoPlato){
+        if (esNuevoPlato) {
             LineaDePedido lineaDePedido = new LineaDePedido(cantidad, plato);
             lineaDePedido.validarCantidad();
             lineasDePedido.add(lineaDePedido);
         }
     }
-    
+
     // regla de negocio
     public void agregarLineaDePedido(LineaDePedido lineaDePedido) {
         lineasDePedido.add(lineaDePedido);
     }
-    
+
     // regla de negocio
-    public void eliminarLineaDePedido(int platoid){
-        for(LineaDePedido lineaDePedido : lineasDePedido){
+    public void eliminarLineaDePedido(int platoid) {
+        for (LineaDePedido lineaDePedido : lineasDePedido) {
             Plato plato = lineaDePedido.getPlato();
-            if(plato.getPlatoid() == platoid){    
+            if (plato.getPlatoid() == platoid) {
                 lineasDePedido.remove(lineaDePedido);
                 break;
             }
         }
     }
-    
+
     // regla de negocio
-    public void actualizarLineaDePedido(int platoid, int cantidad) throws Exception{        
-        for(LineaDePedido lineaDePedido : lineasDePedido){
+    public void actualizarLineaDePedido(int platoid, int cantidad) throws Exception {
+        for (LineaDePedido lineaDePedido : lineasDePedido) {
             Plato plato = lineaDePedido.getPlato();
-            if(plato.getPlatoid() == platoid){    
+            if (plato.getPlatoid() == platoid) {
                 lineaDePedido.validarCantidadActualizada(cantidad);
                 lineaDePedido.setCantidad(cantidad);
                 break;
             }
         }
-    } 
+    }
+
     // regla de negocio
-    public double calcularTotal(){
+    public double calcularSubTotal() {
         double total = 0.0;
-        for(LineaDePedido lineaDePedido : lineasDePedido){
+        for (LineaDePedido lineaDePedido : lineasDePedido) {
             total += lineaDePedido.calcularSubTotal();
         }
         return total;
-    }  
+    }
+
     // regla de negocio
-    public double calcularNumeroDePlatos(){
+    public int calcularNumeroDePlatos() {
         int totaldeplatos = 0;
-        for(LineaDePedido lineaDePedido : lineasDePedido){
+        for (LineaDePedido lineaDePedido : lineasDePedido) {
             totaldeplatos += lineaDePedido.getCantidad();
         }
         return totaldeplatos;
-    }  
+    }
+
     // regla de negocio
-    public void validarPedido()  throws Exception{
-        if(calcularTotal() == 0)
-            throw new Exception("Error de pedido");
+    public void validarPedido() throws Exception {
+        if (calcularSubTotal() == 0) {
+            throw new Exception("Error pedido invalido.");
+        }
     }
-    public double calcularDescuento(){
-       return 0;
-    }  
-    public double calcularTotalito(){
-        return calcularTotal()-calcularDescuento();
+
+    public double calcularDescuento() {
+        return 0.0;
     }
-    
- 
+
+    public double calcularTotal() {
+        return calcularSubTotal() - calcularDescuento();
+    }
 }

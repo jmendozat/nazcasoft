@@ -5,17 +5,55 @@
         <servlet-class>controlador.GestionarPlatosServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>GestionarMesasServlet</servlet-name>
+        <servlet-class>controlador.GestionarMesasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarAccesoServlet</servlet-name>
+        <servlet-class>controlador.GestionarAccesoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarVentaServlet</servlet-name>
+        <servlet-class>controlador.GestionarVentaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarUsuarioServlet</servlet-name>
+        <servlet-class>controlador.GestionarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GestionarPedidosServlet</servlet-name>
         <servlet-class>controlador.GestionarPedidosServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GestionarPlatosServlet</servlet-name>
         <url-pattern>/ModificarPlato</url-pattern>
-        <url-pattern>/NuevoPlato</url-pattern>
         <url-pattern>/InsertarPlato</url-pattern>
         <url-pattern>/ConsultarPlatos</url-pattern>
         <url-pattern>/ConsultarPlato</url-pattern>
         <url-pattern>/EliminarPlato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarMesasServlet</servlet-name>
+        <url-pattern>/ConsultarMesas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarAccesoServlet</servlet-name>
+        <url-pattern>/Index</url-pattern>
+        <url-pattern>/End</url-pattern>
+        <url-pattern>/ViewPlatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarVentaServlet</servlet-name>
+        <url-pattern>/RealizarVenta</url-pattern>
+        <url-pattern>/ConsultarMesasConPedido</url-pattern>
+        <url-pattern>/BuscarPedidoDetalle</url-pattern>
+        <url-pattern>/GuardarVenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarUsuarioServlet</servlet-name>
+        <url-pattern>/NuevoCliente</url-pattern>
+        <url-pattern>/RegistrarCliente</url-pattern>
+        <url-pattern>/ConsultarClientes</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GestionarPedidosServlet</servlet-name>
@@ -27,6 +65,7 @@
         <url-pattern>/AgregarPlato</url-pattern>
         <url-pattern>/GuardarPedido</url-pattern>
         <url-pattern>/ConsultarMesasDePedido</url-pattern>
+        <url-pattern>/ConfirmarPedido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

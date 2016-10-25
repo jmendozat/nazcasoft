@@ -5,9 +5,11 @@
  */
 package controlador.plato;
 
-import modelo.GestionarServicios;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Plato;
 
 /**
@@ -18,19 +20,23 @@ public class InsertarPlato extends GestionarPlatosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "NuevoPlato"; 
+        String url_forward = "PageReturn.jsp"; 
         Plato plato;
         try {
-            plato = new Plato(request.getParameter("nombre"),Double.parseDouble(request.getParameter("precio"))); 
+            plato = new Plato();
+             plato.setNombre(request.getParameter("nombre").trim().toUpperCase());  
+             plato.setPrecio( Double.parseDouble(request.getParameter("precio")));
+             plato.setDescripcion(request.getParameter("descripcion").trim());
+             plato.setUrlfoto(request.getParameter("urlfoto").trim());
+             
         } catch (Exception e) {
-            request.setAttribute("mensaje","Datos incorrectos"); 
+            request.setAttribute("mensaje", Mensaje.REGISTRO_DATOSINCORRECTOS); 
             return url_forward;
         }        
         try{            
             GestionarServicios gestionarPlatosServicio = new GestionarServicios();
-            gestionarPlatosServicio.ingresar(plato);
-            request.setAttribute("mensaje", "Registroado"); 
-            url_forward = "ConsultarPlatos";
+            gestionarPlatosServicio.crearPlato(plato);
+            request.setAttribute("mensaje", Mensaje.REGISTRO_CREADO);
         }
         catch(Exception e){
             request.setAttribute("mensaje", e.getMessage()); 

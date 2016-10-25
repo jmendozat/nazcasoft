@@ -12,10 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Lain
- */
 public abstract class GestorJDBC {
     
     protected Connection conexion;
@@ -23,39 +19,23 @@ public abstract class GestorJDBC {
     public abstract void abrirConexion() throws Exception;
     
     public void cerrarConexion() throws Exception{
-        try {
-            conexion.close();
-        } catch (Exception e) {
-            throw new Exception("Error al cerrar conexion");
-        }        
+            conexion.close();        
     }
     
-    public void iniciarTransaccion() throws Exception{
-        try {
-            conexion.setAutoCommit(false);
-        } catch (Exception e) {
-            throw new Exception("Error al iniciar la transaccion");
-        }        
+    public void iniciarTransaccion() throws Exception{   
+            conexion.setAutoCommit(false);     
     }
     
     public void terminarTransaccion() throws Exception{
-        try {
             conexion.commit();
             conexion.setAutoCommit(true);
-            conexion.close();
-        } catch (Exception e) {
-            throw new Exception("Error al terminar la transaccion");
-        }        
+            conexion.close();      
     }
     
     public void cancelarTransaccion() throws Exception{
-        try {
             conexion.rollback();
             conexion.setAutoCommit(true);
             conexion.close();
-        } catch (Exception e) {
-            throw new Exception("Error al cancelar la Transaccion");
-        }
     }
     
     public PreparedStatement prepararSentencia(String sql) throws SQLException{

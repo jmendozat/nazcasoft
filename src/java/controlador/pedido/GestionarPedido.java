@@ -5,10 +5,11 @@
  */
 package controlador.pedido;
 
-import modelo.GestionarServicios;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Mesa;
 import modelo.Pedido;
 
@@ -20,28 +21,22 @@ public class GestionarPedido extends GestionarPedidosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "ConsultarMesasDePedido";
+        String url_forward = "Modulos/Pedidos/Pedido/PageNewPedido.jsp";
         int mesaid = Integer.parseInt(request.getParameter("mesaid")); 
         try{
             GestionarServicios gestionarPedidosServicio = new GestionarServicios();
             Mesa mesa = gestionarPedidosServicio.buscarMesa(mesaid);
             if(mesa != null){
-                Pedido pedido;
-//             
+                Pedido pedido = null;               
                 if(mesa.isDisponible()){
                     mesa.setDisponible(false);
-                    pedido = new Pedido(mesa); 
-                    url_forward = "BuscarPlatos";
-                }
-                else{
-                    pedido = gestionarPedidosServicio.buscar(mesa);
-                    url_forward = "ConsultarPedido";
+                    pedido = new Pedido(mesa);
                 }
                 HttpSession sesionPedido = request.getSession(true);
                 sesionPedido.setAttribute("pedido", pedido);
             }
             else{
-                request.setAttribute("mensaje", "Registro no existe");
+                request.setAttribute("mensaje", Mensaje.REGISTRO_NO_EXISTE);
             }
         }
         catch(Exception e){

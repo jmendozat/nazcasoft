@@ -4,35 +4,33 @@
  * and open the template in the editor.
  */
 package controlador.pedido;
-import modelo.GestionarServicios;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Pedido;
 import modelo.Plato;
 
-/**
- *
- * @author Lain
- */
+
 public class AgregarPlato extends GestionarPedidosComando{
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "BuscarPlato"; 
+        String url_forward = "PageReturn.jsp"; 
         int platoid, cantidad;
         try {
             platoid = Integer.parseInt(request.getParameter("platoid"));
             cantidad = Integer.parseInt(request.getParameter("cantidad"));            
         } catch (Exception e) {
-            request.setAttribute("mensaje", "Datos incorrectos"); 
+            request.setAttribute("mensaje", Mensaje.REGISTRO_DATOSINCORRECTOS); 
             return url_forward;
         }        
         try{    
-            GestionarServicios gestionarPedidoServicio = new GestionarServicios();
-            Plato plato = gestionarPedidoServicio.buscar(platoid);
+            GestionarServicios gestionarPedidosServicio = new GestionarServicios();
+            Plato plato = gestionarPedidosServicio.buscarPlato(platoid);
             Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
-            pedido.agregarLineaDePedido(plato, cantidad);
-            url_forward = "BuscarPlatos";            
+            pedido.agregarLineaDePedido(plato, cantidad);           
         }
         catch(Exception e){
             request.setAttribute("mensaje", e.getMessage()); 

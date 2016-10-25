@@ -7,18 +7,24 @@ package modelo;
 
 /**
  *
- * @author Lain
+ * @author
+ * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public class Mesa {
     private int mesaid;
     private int numero;
     private boolean disponible;
+    private TipoMesa tipoMesa;
     private String color;
-    private static final String COLOR_MESADISPONIBLE = "greenyellow";
-    private static final String COLOR_MESAOCUPADA = "darksalmon";
+    private static final String COLOR_MESADISPONIBLE = "label label-primary";
+    private static final String COLOR_MESAOCUPADA = "label label-warning";
+
+    public Mesa() {
+    }
 
     public Mesa(int mesaid) {
         this.mesaid = mesaid;
+        this.disponible = false;
     }
 
     public Mesa(int numero, boolean disponible) {
@@ -36,6 +42,14 @@ public class Mesa {
 
     public int getMesaid() {
         return mesaid;
+    }
+
+    public TipoMesa getTipoMesa() {
+        return tipoMesa;
+    }
+
+    public void setTipoMesa(TipoMesa tipoMesa) {
+        this.tipoMesa = tipoMesa;
     }
 
     public void setMesaid(int mesaid) {

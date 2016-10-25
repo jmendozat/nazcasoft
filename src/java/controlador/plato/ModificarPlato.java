@@ -5,35 +5,39 @@
  */
 package controlador.plato;
 
-import modelo.GestionarServicios;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Plato;
 
 /**
  *
  * @author Lain
  */
-public class ModificarPlato extends GestionarPlatosComando{
-
+public class ModificarPlato extends GestionarPlatosComando {
+    
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "ConsultarPlato";                
+        String url_forward = "PageReturn.jsp";        
         Plato plato;
         try {
-            plato = new Plato(Integer.parseInt(request.getParameter("platoid")),request.getParameter("nombre"),Double.parseDouble(request.getParameter("precio")));
+            plato = new Plato(Integer.parseInt(request.getParameter("platoid")),
+                    request.getParameter("nombre").trim().toUpperCase(),
+                    Double.parseDouble(request.getParameter("precio")),
+                    request.getParameter("descripcion").trim(),
+                    request.getParameter("urlfoto").trim(),
+                    request.getParameter("estado"));
         } catch (Exception e) {
-            request.setAttribute("mensaje", "Datos incorrectos"); 
+            request.setAttribute("mensaje", Mensaje.REGISTRO_DATOSINCORRECTOS);            
             return url_forward;
-        }          
-        try{
+        }        
+        try {
             GestionarServicios gestionarPlatosServicio = new GestionarServicios();
-            gestionarPlatosServicio.modificar(plato);
-            request.setAttribute("mensaje", "Modificado"); 
-            url_forward = "ConsultarPlatos";
-        }
-        catch(Exception e){
-            request.setAttribute("mensaje", e.getMessage()); 
+            gestionarPlatosServicio.modificarPlato(plato);
+            request.setAttribute("mensaje", Mensaje.REGISTRO_MODIFICADO);            
+        } catch (Exception e) {
+            request.setAttribute("mensaje", e.getMessage());            
         }
         return url_forward;
     }

@@ -17,7 +17,7 @@ public class EliminarPlatoDePedido extends GestionarPedidosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "c1_presentacion/vista/PaginaRegistrarPedido.jsp"; 
+        String url_forward = "PageReturn.jsp"; 
         int platoid = Integer.parseInt(request.getParameter("platoid"));
         Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
         pedido.eliminarLineaDePedido(platoid);

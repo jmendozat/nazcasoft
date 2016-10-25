@@ -27,5 +27,13 @@ public class GestionarPedidosServlet extends HttpServlet {
         RequestDispatcher despachador = request.getRequestDispatcher(url);
         despachador.forward(request, response);
     }
+      @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String urlServlet = request.getServletPath();
+        GestionarPedidosComando gestionarPedidosComando = GestionarPedidosComando.instanciarComando(urlServlet.substring(1));
+        String url = gestionarPedidosComando.ejecutar(request,response);
+        RequestDispatcher despachador = request.getRequestDispatcher(url);
+        despachador.forward(request, response);
+    }
 
 }

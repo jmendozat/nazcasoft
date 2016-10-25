@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.GestionarServicios;
 import modelo.Pedido;
+import modelo.Persona;
+import modelo.Usuario;
 
 /**
  *
@@ -18,14 +20,19 @@ public class GuardarPedido extends GestionarPedidosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "ConsultarMesasDePedido";        
+        String url_forward = "PageReturn.jsp";        
         try{    
             Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
+            Persona persona = (Persona)request.getSession().getAttribute("sesUsuario");
+            Usuario usuario = new Usuario(persona);
+            Persona cliente = new Persona(Integer.parseInt(request.getParameter("idCliente")));
+            pedido.setUsuario(usuario);
+            pedido.setCliente(cliente);
             GestionarServicios gestionarPedidosServicio = new GestionarServicios();            
-            gestionarPedidosServicio.ingresar(pedido);
+            gestionarPedidosServicio.guardarPedido(pedido);
         }
         catch(Exception e){
-            url_forward = "c1_presentacion/vista/PaginaRegistrarPedido.jsp";
+            url_forward = "PageReturn.jsp";
             request.setAttribute("mensaje", e.getMessage()); 
         }
         return url_forward;

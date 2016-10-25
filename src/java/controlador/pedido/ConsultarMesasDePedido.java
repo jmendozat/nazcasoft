@@ -5,25 +5,30 @@
  */
 package controlador.pedido;
 
-import modelo.GestionarServicios;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
 import modelo.Mesa;
 
-/**
- *
- * @author Lain
- */
+
 public class ConsultarMesasDePedido extends GestionarPedidosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "c1_presentacion/vista/PaginaGestionarPedidos.jsp";  
+        String url_forward="";  
         try{
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
             GestionarServicios gestionarPedidosServicio = new GestionarServicios();  
-            List<Mesa> listaMesas = gestionarPedidosServicio.buscar();
+            List<Mesa> listaMesas = gestionarPedidosServicio.buscarMesas();
             request.setAttribute("listaMesas", listaMesas);
+            if(tipo > 10){
+                url_forward = "Modulos/Pedidos/Pedido/PageBuscarMesas.jsp";
+            }else{
+             url_forward  = "Modulos/Pedidos/Pedido/PageMostrarMesas.jsp";
+            }
+               
         }
         catch(Exception e){
             request.setAttribute("mensaje", e.getMessage());

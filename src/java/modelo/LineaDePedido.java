@@ -5,10 +5,10 @@
  */
 package modelo;
 
-
 /**
  *
- * @author Lain
+ * @author
+ * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public class LineaDePedido {
     private int cantidad;
@@ -54,7 +54,7 @@ public class LineaDePedido {
     // regla de negocio
     private void validarCantidad(int cantidadSolicitada) throws Exception{
         if(cantidadSolicitada < 1 || cantidadSolicitada > 15)
-            throw new Exception("Cantidad invalida");
+            throw new Exception("Error cantidad invalida");
     }
     
     // regla de negocio
@@ -83,5 +83,4 @@ public class LineaDePedido {
     public void agregarCantidad(int cantidadAgregada){
         cantidad = cantidad + cantidadAgregada;
     }
-
 }

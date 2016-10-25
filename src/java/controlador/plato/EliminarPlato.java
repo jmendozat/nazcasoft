@@ -5,9 +5,11 @@
  */
 package controlador.plato;
 
-import modelo.GestionarServicios;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.GestionarServicios;
+import modelo.Mensaje;
 import modelo.Plato;
 
 /**
@@ -18,12 +20,12 @@ public class EliminarPlato extends GestionarPlatosComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_forward = "ConsultarPlatos";                
+        String url_forward = "PageReturn.jsp";                
         Plato plato = new Plato(Integer.parseInt(request.getParameter("platoid")));        
         try{
             GestionarServicios gestionarPlatosServicio = new GestionarServicios();
-            gestionarPlatosServicio.eliminar(plato);
-            request.setAttribute("mensaje", "Registro Eliminado"); 
+            gestionarPlatosServicio.eliminarPlato(plato);
+            request.setAttribute("mensaje", Mensaje.REGISTRO_ELIMINADO); 
         }
         catch(Exception e){
             request.setAttribute("mensaje", e.getMessage()); 
