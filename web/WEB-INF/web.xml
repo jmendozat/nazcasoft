@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>GestionarPlatosServlet</servlet-name>
+        <servlet-class>controlador.GestionarPlatosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GestionarPedidosServlet</servlet-name>
+        <servlet-class>controlador.GestionarPedidosServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GestionarPlatosServlet</servlet-name>
+        <url-pattern>/ModificarPlato</url-pattern>
+        <url-pattern>/NuevoPlato</url-pattern>
+        <url-pattern>/InsertarPlato</url-pattern>
+        <url-pattern>/ConsultarPlatos</url-pattern>
+        <url-pattern>/ConsultarPlato</url-pattern>
+        <url-pattern>/EliminarPlato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionarPedidosServlet</servlet-name>
+        <url-pattern>/ConsultarPedido</url-pattern>
+        <url-pattern>/GestionarPedido</url-pattern>
+        <url-pattern>/EliminarPlatoDePedido</url-pattern>
+        <url-pattern>/BuscarPlatos</url-pattern>
+        <url-pattern>/BuscarPlato</url-pattern>
+        <url-pattern>/AgregarPlato</url-pattern>
+        <url-pattern>/GuardarPedido</url-pattern>
+        <url-pattern>/ConsultarMesasDePedido</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
