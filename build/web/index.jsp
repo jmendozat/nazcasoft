@@ -39,7 +39,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="Login.jsp">TIENDA VIRTUAL</a>
+                        <a class="navbar-brand" href="Login">TIENDA VIRTUAL</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -103,10 +103,10 @@
         </section>
 
         <section  class="container features">
-            <div class="row" id="idPlatosView">
-
-
+            <div id="idPlatosView">
+                
             </div>
+            
 
 
         </section>

@@ -1,0 +1,139 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package c4_persistencia.pedidos.postgresql;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import c3_dominio.pedidos.contrato.IMesaDAO;
+import c3_dominio.pedidos.entidad.Mesa;
+import c3_dominio.pedidos.entidad.TipoMesa;
+import c4_persistencia.GestorJDBC;
+import c5_transversal.excepciones.ExcepcionSQL;
+
+/**
+ *
+ * @author
+ * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
+ */
+public class MesaDAOPostgre implements IMesaDAO {
+
+    GestorJDBC gestorJDBC;
+
+    public MesaDAOPostgre(GestorJDBC gestorJDBC) {
+        this.gestorJDBC = gestorJDBC;
+    }
+
+    @Override
+    public List<Mesa> func_NAZCA_ADM_PEDIDOS_MESA_Listar() throws ExcepcionSQL {
+        ArrayList<Mesa> listaMesas = new ArrayList<>();
+        Mesa mesa;
+        ResultSet resultado;
+        String sentenciaSQL = "SELECT  m.mesaid,\n"
+                + "	m.numero,\n"
+                + "	m.disponible,\n"
+                + "	tm.codigotipomesa,\n"
+                + "	tm.nombretipo,\n"
+                + "	tm.descripciontipo\n"
+                + "FROM mesa m\n"
+                + "     INNER JOIN tipomesa tm \n"
+                + "     ON m.codigotipomesa = tm.codigotipomesa";
+        try {
+            resultado = gestorJDBC.ejecutarConsulta(sentenciaSQL);
+            while (resultado.next()) {
+                mesa = crearObjetoMesa(resultado);
+                listaMesas.add(mesa);
+            }
+            resultado.close();
+            return listaMesas;
+        } catch (SQLException e) {
+            throw ExcepcionSQL.crearErrorConsultar();
+        }
+    }
+
+    @Override
+    public void func_NAZCA_CRUD_Crear(Mesa mesa) throws ExcepcionSQL {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void func_NAZCA_CRUD_Editar(Mesa mesa) throws ExcepcionSQL {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void func_NAZCA_CRUD_Eliminar(Mesa mesa) throws ExcepcionSQL {
+        try {
+            String sentenciaSQL = "delete from mesa where idmesa= ?";
+            PreparedStatement sentencia;
+            sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
+            sentencia.setInt(1, mesa.getMesaid());
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            throw ExcepcionSQL.crearErrorEliminar();
+        }
+    }
+
+    @Override
+    public Mesa func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+        Mesa mesa = null;
+        ResultSet resultado;
+        String sentenciaSQL = "SELECT  m.mesaid,\n"
+                + "	m.numero,\n"
+                + "	m.disponible,\n"
+                + "	tm.codigotipomesa,\n"
+                + "	tm.nombretipo,\n"
+                + "	tm.descripciontipo\n"
+                + "FROM mesa m\n"
+                + "     INNER JOIN tipomesa tm \n"
+                + "     ON m.codigotipomesa = tm.codigotipomesa\n"
+                + "     WHERE m.mesaid = " + id;
+        try {
+            resultado = gestorJDBC.ejecutarConsulta(sentenciaSQL);
+            if (resultado.next()) {
+                mesa = crearObjetoMesa(resultado);
+            }
+            resultado.close();
+            return mesa;
+        } catch (SQLException e) {
+            throw ExcepcionSQL.crearErrorConsultar();
+        }
+    }
+
+    private Mesa crearObjetoMesa(ResultSet resultado) throws SQLException {
+        Mesa mesa = new Mesa();
+        mesa.setMesaid(resultado.getInt("mesaid"));
+        mesa.setNumero(resultado.getInt("numero"));
+        mesa.setDisponible(resultado.getBoolean("disponible"));
+        TipoMesa tipoMesa = new TipoMesa();
+        tipoMesa.setCodigo(resultado.getInt("codigotipomesa"));
+        tipoMesa.setNombre(resultado.getString("nombretipo"));
+        tipoMesa.setDescripcion(resultado.getString("descripciontipo"));
+        mesa.setTipoMesa(tipoMesa);
+        return mesa;
+    }
+
+    @Override
+    public void func_NAZCA_ADM_PEDIDOS_MESA_Modificar(Mesa mesa) throws ExcepcionSQL {
+        int registros_afectados;
+        String sentenciaSQL = "update mesa set disponible = ? where mesaid = ?";
+        try {
+            PreparedStatement sentencia;
+            sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
+            sentencia.setBoolean(1, mesa.isDisponible());
+            sentencia.setInt(2, mesa.getMesaid());
+            registros_afectados = sentencia.executeUpdate();
+            sentencia.close();
+            if (registros_afectados == 0) {
+                throw ExcepcionSQL.crearErrorModificar();
+            }
+        } catch (SQLException e) {
+            throw ExcepcionSQL.crearErrorModificar();
+        }
+    }
+}

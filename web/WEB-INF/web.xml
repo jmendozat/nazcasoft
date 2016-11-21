@@ -1,64 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>GestionarPlatosServlet</servlet-name>
-        <servlet-class>controlador.GestionarPlatosServlet</servlet-class>
+   <servlet>
+        <servlet-name>AdministrativoServlet</servlet-name>
+        <servlet-class>c1_presentacion.administrativo.controlador.AdminController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GestionarMesasServlet</servlet-name>
-        <servlet-class>controlador.GestionarMesasServlet</servlet-class>
+        <servlet-name>VentasServlet</servlet-name>
+        <servlet-class>c1_presentacion.ventas.controlador.VentasController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GestionarAccesoServlet</servlet-name>
-        <servlet-class>controlador.GestionarAccesoServlet</servlet-class>
+        <servlet-name>PlatoController</servlet-name>
+        <servlet-class>c1_presentacion.pedidos.controlador.PlatoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GestionarVentaServlet</servlet-name>
-        <servlet-class>controlador.GestionarVentaServlet</servlet-class>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <servlet-class>c1_presentacion.administrativo.controlador.UsuarioController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GestionarUsuarioServlet</servlet-name>
-        <servlet-class>controlador.GestionarUsuarioServlet</servlet-class>
+        <servlet-name>PedidoController</servlet-name>
+        <servlet-class>c1_presentacion.pedidos.controlador.PedidoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GestionarPedidosServlet</servlet-name>
-        <servlet-class>controlador.GestionarPedidosServlet</servlet-class>
+        <servlet-name>ConfController</servlet-name>
+        <servlet-class>c1_presentacion.administrativo.controlador.ConfController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GestionarPlatosServlet</servlet-name>
+        <servlet-name>AdministrativoServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+        <url-pattern>/Logout</url-pattern>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VentasServlet</servlet-name>
+        <url-pattern>/RealizarVenta</url-pattern>
+        <url-pattern>/ConsultarMesasConPedido</url-pattern>
+        <url-pattern>/BuscarPedidoDetalle</url-pattern>
+        <url-pattern>/GuardarVenta</url-pattern>
+        <url-pattern>/DetallePlatosPago</url-pattern>
+        <url-pattern>/RealizarPago</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlatoController</servlet-name>
+        <url-pattern>/ViewPlatos</url-pattern>
         <url-pattern>/ModificarPlato</url-pattern>
         <url-pattern>/InsertarPlato</url-pattern>
         <url-pattern>/ConsultarPlatos</url-pattern>
         <url-pattern>/ConsultarPlato</url-pattern>
         <url-pattern>/EliminarPlato</url-pattern>
+        <url-pattern>/GestionarPlato</url-pattern>
+        <url-pattern>/ViewImgPlato</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GestionarMesasServlet</servlet-name>
-        <url-pattern>/ConsultarMesas</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GestionarAccesoServlet</servlet-name>
-        <url-pattern>/Index</url-pattern>
-        <url-pattern>/End</url-pattern>
-        <url-pattern>/ViewPlatos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GestionarVentaServlet</servlet-name>
-        <url-pattern>/RealizarVenta</url-pattern>
-        <url-pattern>/ConsultarMesasConPedido</url-pattern>
-        <url-pattern>/BuscarPedidoDetalle</url-pattern>
-        <url-pattern>/GuardarVenta</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GestionarUsuarioServlet</servlet-name>
+        <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/NuevoCliente</url-pattern>
-        <url-pattern>/RegistrarCliente</url-pattern>
         <url-pattern>/ConsultarClientes</url-pattern>
+        <url-pattern>/RegistrarCliente</url-pattern>
+        <url-pattern>/MiPedido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GestionarPedidosServlet</servlet-name>
-        <url-pattern>/ConsultarPedido</url-pattern>
+        <servlet-name>PedidoController</servlet-name>
+        <url-pattern>/RealizarPedido</url-pattern>
         <url-pattern>/GestionarPedido</url-pattern>
+        <url-pattern>/ConsultarPedido</url-pattern>
         <url-pattern>/EliminarPlatoDePedido</url-pattern>
         <url-pattern>/BuscarPlatos</url-pattern>
         <url-pattern>/BuscarPlato</url-pattern>
@@ -66,6 +69,15 @@
         <url-pattern>/GuardarPedido</url-pattern>
         <url-pattern>/ConsultarMesasDePedido</url-pattern>
         <url-pattern>/ConfirmarPedido</url-pattern>
+        <url-pattern>/AddPlato</url-pattern>
+        <url-pattern>/ItemsPedido</url-pattern>
+        <url-pattern>/DetallePlatos</url-pattern>
+        <url-pattern>/ItemsPedidoCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfController</servlet-name>
+        <url-pattern>/ConexionServicio</url-pattern>
+        <url-pattern>/GuardarConexion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
