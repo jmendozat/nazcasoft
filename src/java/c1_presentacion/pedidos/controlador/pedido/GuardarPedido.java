@@ -7,7 +7,7 @@ package c1_presentacion.pedidos.controlador.pedido;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.pedidos.RealizarPedidoServicio;
+import c2_aplicacion.pedidos.servicio.RealizarPedidoServicio;
 import c3_dominio.administrativo.entidad.Persona;
 import c3_dominio.administrativo.entidad.Usuario;
 import c3_dominio.pedidos.entidad.Pedido;

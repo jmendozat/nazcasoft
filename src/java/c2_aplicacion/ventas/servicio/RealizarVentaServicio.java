@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package c2_aplicacion.ventas;
+package c2_aplicacion.ventas.servicio;
 
 import c3_dominio.ventas.contrato.IVentaDAO;
 import c3_dominio.ventas.entidad.Venta;

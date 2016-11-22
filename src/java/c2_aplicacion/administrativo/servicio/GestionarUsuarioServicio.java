@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package c2_aplicacion.administrativo;
+package c2_aplicacion.administrativo.servicio;
 
 import c3_dominio.administrativo.contrato.IPermisoDAO;
 import c3_dominio.administrativo.contrato.IPersonaDAO;

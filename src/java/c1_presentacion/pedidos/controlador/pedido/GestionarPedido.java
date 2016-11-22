@@ -8,7 +8,7 @@ package c1_presentacion.pedidos.controlador.pedido;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import c2_aplicacion.pedidos.GestionarMesaServicio;
+import c2_aplicacion.pedidos.servicio.GestionarMesaServicio;
 import c3_dominio.administrativo.entidad.Mensaje;
 import c3_dominio.pedidos.contrato.ICalculoDescuento;
 import c3_dominio.pedidos.entidad.Mesa;

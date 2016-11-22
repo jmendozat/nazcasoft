@@ -8,7 +8,7 @@ package c1_presentacion.ventas.controlador.venta;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.pedidos.GestionarMesaServicio;
+import c2_aplicacion.pedidos.servicio.GestionarMesaServicio;
 import c3_dominio.pedidos.entidad.Mesa;
 import c5_transversal.excepciones.ExcepcionSQL;
 

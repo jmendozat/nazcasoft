@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import c2_aplicacion.administrativo.GestionarUsuarioServicio;
+import c2_aplicacion.administrativo.servicio.GestionarUsuarioServicio;
 import c3_dominio.administrativo.entidad.Persona;
 import c3_dominio.administrativo.entidad.Usuario;
 import c5_transversal.excepciones.ExcepcionSQL;

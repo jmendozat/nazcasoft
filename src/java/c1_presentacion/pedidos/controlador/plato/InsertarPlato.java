@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.pedidos.GestionarPlatoServicio;
+import c2_aplicacion.pedidos.servicio.GestionarPlatoServicio;
 import c3_dominio.pedidos.entidad.Plato;
 import c5_transversal.excepciones.ExcepcionRegla;
 import c5_transversal.excepciones.ExcepcionSQL;

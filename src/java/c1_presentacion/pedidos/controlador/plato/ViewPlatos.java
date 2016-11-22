@@ -5,7 +5,7 @@
  */
 package c1_presentacion.pedidos.controlador.plato;
 
-import c2_aplicacion.pedidos.GestionarPlatoServicio;
+import c2_aplicacion.pedidos.servicio.GestionarPlatoServicio;
 import c3_dominio.pedidos.entidad.Pedido;
 import c3_dominio.pedidos.entidad.Plato;
 import java.util.List;

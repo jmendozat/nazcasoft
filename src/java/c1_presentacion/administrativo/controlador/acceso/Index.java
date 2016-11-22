@@ -8,7 +8,7 @@ package c1_presentacion.administrativo.controlador.acceso;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.administrativo.GestionarInterfaceServicio;
+import c2_aplicacion.administrativo.servicio.GestionarInterfaceServicio;
 import c3_dominio.administrativo.entidad.Interface;
 import c3_dominio.administrativo.entidad.Persona;
 import c5_transversal.excepciones.ExcepcionSQL;

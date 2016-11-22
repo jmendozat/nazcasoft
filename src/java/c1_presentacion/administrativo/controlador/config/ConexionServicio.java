@@ -7,7 +7,7 @@ package c1_presentacion.administrativo.controlador.config;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.administrativo.GestionarConexion;
+import c2_aplicacion.administrativo.servicio.GestionarConexion;
 import c3_dominio.administrativo.entidad.Conexion;
 
 /**

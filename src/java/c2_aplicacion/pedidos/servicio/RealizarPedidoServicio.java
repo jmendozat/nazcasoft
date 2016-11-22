@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package c2_aplicacion.pedidos;
+package c2_aplicacion.pedidos.servicio;
 
 import c3_dominio.pedidos.contrato.IMesaDAO;
 import c3_dominio.pedidos.contrato.IPedidoDAO;

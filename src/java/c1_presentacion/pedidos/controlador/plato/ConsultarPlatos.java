@@ -9,7 +9,7 @@ package c1_presentacion.pedidos.controlador.plato;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import c2_aplicacion.pedidos.GestionarPlatoServicio;
+import c2_aplicacion.pedidos.servicio.GestionarPlatoServicio;
 import c3_dominio.pedidos.entidad.Plato;
 import c5_transversal.excepciones.ExcepcionSQL;
 
