@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import c2_aplicacion.administrativo.servicio.GestionarPersonaServicio;
 import c3_dominio.administrativo.entidad.Persona;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +29,7 @@ public class ConsultarClientes extends GestionarUsuarioComando{
             List<Persona> listClient = GestionarPersonaServicio.getInstancia().func_NAZCA_ADM_CLIENTE_Buscar(desc);
             request.setAttribute("listClientes", listClient);
         } catch (ExcepcionSQL e) {
-            
+            Logger.getLogger(ConsultarClientes.class.getName()).log(Level.SEVERE, null, e);
         }
         return url;
     }

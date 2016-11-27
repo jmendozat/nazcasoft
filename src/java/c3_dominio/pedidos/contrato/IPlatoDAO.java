@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.contrato;
 
@@ -16,6 +35,12 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public interface IPlatoDAO extends ICrudDAO<Plato>{
-    
+    /**
+     * <b>Función de Acceso a Datos</b>
+     * Sirbe para devolver una lista de platos dado el nombre.
+     * @param nombre
+     * @return
+     * @throws ExcepcionSQL 
+     */
     public List<Plato> func_NAZCA_PEDIDO_BuscarPlatoPorNombre(String nombre)throws ExcepcionSQL;
 }

@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c4_persistencia;
 
@@ -11,6 +30,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class GestorJDBC {
 
@@ -29,8 +50,10 @@ public abstract class GestorJDBC {
     public void iniciarTransaccion() throws ExcepcionSQL {
         try {
             conexion.setAutoCommit(false);
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorIniciarTransaccion();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -39,8 +62,10 @@ public abstract class GestorJDBC {
             conexion.commit();
             conexion.setAutoCommit(true);
             conexion.close();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorTerminarTransaccion();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -50,8 +75,10 @@ public abstract class GestorJDBC {
             conexion.rollback();
             conexion.setAutoCommit(true);
             conexion.close();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorCancelarTransaccion();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestorJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

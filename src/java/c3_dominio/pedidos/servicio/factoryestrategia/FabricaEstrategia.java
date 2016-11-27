@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.servicio.factoryestrategia;
 
@@ -28,7 +47,12 @@ public abstract class FabricaEstrategia {
             return null;
         }
     }
-    
+    /**
+     * <b>Metodo Abstracto para crear el calculo descuento</b>
+     * @param pedido
+     * @return
+     * @throws ExcepcionRegla 
+     */
     public abstract ICalculoDescuento crearCalculoDescuento(Pedido pedido)throws ExcepcionRegla;
     
     

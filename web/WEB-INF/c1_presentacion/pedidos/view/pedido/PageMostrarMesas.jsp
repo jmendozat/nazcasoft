@@ -20,7 +20,8 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <table class="table table-striped table-hover">
+                    <div class="table-responsive ">
+                         <table class="table table-striped table-hover">
                         <tbody>
                             <%
                                 for (Mesa mesa : listaMesas) {
@@ -41,6 +42,8 @@
 
                         </tbody>
                     </table>
+                    </div>
+                   
                 </div>
             </div>
         </div>

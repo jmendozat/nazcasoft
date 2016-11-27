@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c1_presentacion.administrativo.controlador;
 
@@ -28,6 +47,16 @@ public class Acceso extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        gestionarAcceso(req, resp);
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        gestionarAcceso(req, resp);
+    }
+
+    private void gestionarAcceso(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String usuario, password;
         usuario = req.getParameter("txtUsuario");
         password = req.getParameter("txtPassword");
@@ -42,35 +71,10 @@ public class Acceso extends HttpServlet {
                 despachador.forward(req, resp);
             }
 
-        } catch (IOException | ServletException | ExcepcionSQL e) {
+        } catch (ExcepcionSQL e) {
             RequestDispatcher despachador = req.getRequestDispatcher("Login");
             despachador.forward(req, resp);
         }
-
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       String usuario, password;
-        usuario = req.getParameter("txtUsuario");
-        password = req.getParameter("txtPassword");
-        try {
-            Persona persona = GestionarUsuarioServicio.getInstancia().func_NAZCA_ADM_Login(new Usuario(usuario, password));
-            if (persona != null) {
-                HttpSession sesionUsuario = req.getSession(true);
-                sesionUsuario.setAttribute("sesUsuario", persona);
-                resp.sendRedirect("Index");
-            } else {
-                RequestDispatcher despachador = req.getRequestDispatcher("Login");
-                despachador.forward(req, resp);
-            }
-
-        } catch (IOException | ServletException | ExcepcionSQL e) {
-            RequestDispatcher despachador = req.getRequestDispatcher("Login");
-            despachador.forward(req, resp);
-        }
-
-    }
-    
- 
 }

@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.entidad;
 
@@ -120,7 +139,10 @@ public class Plato {
         this.activo = activo;
     }
 
-    // se valida una regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * @throws ExcepcionRegla 
+     */
     public void validarPrecio() throws ExcepcionRegla {
         if (precio < 10.0 || precio > 200.0) {
             throw ExcepcionRegla.crearErrorPlatoPrecioIncorrecto();

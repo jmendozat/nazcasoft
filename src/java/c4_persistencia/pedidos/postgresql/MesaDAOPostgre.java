@@ -15,6 +15,8 @@ import c3_dominio.pedidos.entidad.Mesa;
 import c3_dominio.pedidos.entidad.TipoMesa;
 import c4_persistencia.GestorJDBC;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,10 +52,12 @@ public class MesaDAOPostgre implements IMesaDAO {
                 listaMesas.add(mesa);
             }
             resultado.close();
-            return listaMesas;
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return listaMesas;
     }
 
     @Override
@@ -74,8 +78,10 @@ public class MesaDAOPostgre implements IMesaDAO {
             sentencia = gestorJDBC.prepararSentencia(sentenciaSQL);
             sentencia.setInt(1, mesa.getMesaid());
             sentencia.executeUpdate();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorEliminar();
+        } catch (SQLException ex) {
+            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,10 +105,12 @@ public class MesaDAOPostgre implements IMesaDAO {
                 mesa = crearObjetoMesa(resultado);
             }
             resultado.close();
-            return mesa;
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return mesa;
     }
 
     private Mesa crearObjetoMesa(ResultSet resultado) throws SQLException {
@@ -132,8 +140,10 @@ public class MesaDAOPostgre implements IMesaDAO {
             if (registros_afectados == 0) {
                 throw ExcepcionSQL.crearErrorModificar();
             }
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
+        } catch (SQLException ex) {
+            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

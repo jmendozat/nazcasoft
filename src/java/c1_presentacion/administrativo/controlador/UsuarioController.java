@@ -22,15 +22,15 @@ public class UsuarioController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String urlServlet = req.getServletPath();
-        GestionarUsuarioComando gestionarUsuarioComando = GestionarUsuarioComando.instanciarComando(urlServlet.substring(1));
-        String url = gestionarUsuarioComando.ejecutar(req, resp);
-        RequestDispatcher despachador = req.getRequestDispatcher(url);
-        despachador.forward(req, resp);
+        gestionarUsuarioController(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        gestionarUsuarioController(req, resp);
+    }
+
+    private void gestionarUsuarioController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlServlet = req.getServletPath();
         GestionarUsuarioComando gestionarUsuarioComando = GestionarUsuarioComando.instanciarComando(urlServlet.substring(1));
         String url = gestionarUsuarioComando.ejecutar(req, resp);

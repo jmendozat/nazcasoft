@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.entidad;
 
@@ -40,18 +59,14 @@ public class Pedido {
         lineasDePedido = new ArrayList();
     }
     
-    
-// constructor usado desde la capa de presentación
     public Pedido(Mesa mesa) {
         pedidoid = 0;
         this.mesa = mesa;
         fecha = Date.valueOf(LocalDate.now());
-        //fecha = Date.valueOf(String.format("%1$tY-%1$tm-%1$te", new java.util.Date()));
         estado = ABIERTO;
         lineasDePedido = new ArrayList();
     }
 
-    // constructor usado desde la capa de persistencia
     public Pedido(int pedidoid, Date fecha, String estado) {
         this.pedidoid = pedidoid;
         this.fecha = fecha;
@@ -119,8 +134,14 @@ public class Pedido {
         this.estrategiadescuento = estrategiadescuento;
     }
 
-    // regla de negocio
-    public void agregarLineaDePedido(Plato plato, int cantidad) throws Exception {
+    /**
+     * <b>Regla De Negocio</b>
+     * Esta función agrega un plato mas la cantidad al pedido.
+     * @param plato
+     * @param cantidad
+     * @throws Exception 
+     */
+    public void agregarLineaDePedido(Plato plato, int cantidad)throws Exception{
         boolean esNuevoPlato = true;
         for (LineaDePedido lineaDePedidoExistente : lineasDePedido) {
             Plato platoexistente = lineaDePedidoExistente.getPlato();
@@ -138,12 +159,20 @@ public class Pedido {
         }
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Funcion de agregacion de toda una Linea de Pedidos
+     * @param lineaDePedido 
+     */
     public void agregarLineaDePedido(LineaDePedido lineaDePedido) {
         lineasDePedido.add(lineaDePedido);
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Eliminar la linea de Peido, necesita el identificvado del plato.
+     * @param platoid 
+     */
     public void eliminarLineaDePedido(int platoid) {
         for (LineaDePedido lineaDePedido : lineasDePedido) {
             Plato plato = lineaDePedido.getPlato();
@@ -154,7 +183,13 @@ public class Pedido {
         }
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Actualiza la lines de pedidos, necesita los sigueintes parametros:
+     * @param platoid
+     * @param cantidad
+     * @throws Exception 
+     */
     public void actualizarLineaDePedido(int platoid, int cantidad) throws Exception {
         for (LineaDePedido lineaDePedido : lineasDePedido) {
             Plato plato = lineaDePedido.getPlato();
@@ -166,35 +201,52 @@ public class Pedido {
         }
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Calcula el sub total de todos los items agregados al pedido.
+     * @return 
+     */
     public double calcularSubTotal() {
         double total = 0.0;
-        for (LineaDePedido lineaDePedido : lineasDePedido) {
-            total += lineaDePedido.calcularSubTotal();
-        }
+        total = lineasDePedido.stream().map((lineaDePedido) -> lineaDePedido.calcularSubTotal()).reduce(total, (accumulator, _item) -> accumulator + _item);
         return total;
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Clacula el numero de platos de todos los items agregados al pedido.
+     * @return 
+     */
     public int calcularNumeroDePlatos() {
         int totaldeplatos = 0;
-        for (LineaDePedido lineaDePedido : lineasDePedido) {
-            totaldeplatos += lineaDePedido.getCantidad();
-        }
+        totaldeplatos = lineasDePedido.stream().map((lineaDePedido) -> lineaDePedido.getCantidad()).reduce(totaldeplatos, Integer::sum);
         return totaldeplatos;
     }
 
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Valida el pedido siempre y cuando el sub total sea mayor a 0.
+     * @throws ExcepcionRegla 
+     */
     public void validarPedido() throws ExcepcionRegla {
         if (calcularSubTotal() == 0) {
             throw ExcepcionRegla.crearErrorPedido();
         }
     }
 
+    /**
+     * <b>Regla De Negocio</b>
+     * Este metodo calcula el descuento, esta formado por un conjunto de composiciones de estrategias.
+     * @return 
+     */
     public double calcularDescuento() {
         return estrategiadescuento.calcularDescuento(this);
     }
-
+    /**
+     * <b>Regla De Negocio</b>
+     * Calcular el total de todos los items del pedido.
+     * @return 
+     */
     public double calcularTotal() {
         return calcularSubTotal() - calcularDescuento();
     }

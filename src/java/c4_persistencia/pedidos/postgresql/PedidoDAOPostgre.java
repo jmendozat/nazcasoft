@@ -17,6 +17,8 @@ import c3_dominio.pedidos.entidad.Pedido;
 import c3_dominio.pedidos.entidad.Plato;
 import c4_persistencia.GestorJDBC;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -93,11 +95,13 @@ public class PedidoDAOPostgre implements IPedidoDAO {
             }
             resultado.close();
             sentencia.close();
-            return pedido;
-        } catch (SQLException e) {
-            throw ExcepcionSQL.crearErrorConsultar();
-        }
 
+        } catch (ExcepcionSQL e) {
+            throw ExcepcionSQL.crearErrorConsultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return pedido;
     }
 
     @Override
@@ -141,8 +145,10 @@ public class PedidoDAOPostgre implements IPedidoDAO {
                 }
             }
             sentencia.close();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -158,7 +164,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
             registros_afectados = sentencia.executeUpdate();
             sentencia.close();
             if (registros_afectados == 0) {
-                  throw ExcepcionSQL.crearErrorModificar();
+                throw ExcepcionSQL.crearErrorModificar();
             }
             sentencia = gestorJDBC.prepararSentencia(sentenciaSQL2);
             for (LineaDePedido lineaDePedido : pedido.getLineasDePedido()) {
@@ -168,12 +174,14 @@ public class PedidoDAOPostgre implements IPedidoDAO {
                 sentencia.setDouble(4, lineaDePedido.getPrecio());
                 registros_afectados = sentencia.executeUpdate();
                 if (registros_afectados == 0) {
-                     throw ExcepcionSQL.crearErrorModificar();
+                    throw ExcepcionSQL.crearErrorModificar();
                 }
             }
             sentencia.close();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

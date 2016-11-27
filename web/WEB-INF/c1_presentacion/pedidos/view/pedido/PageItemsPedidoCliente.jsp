@@ -89,6 +89,25 @@
                             <h5>Resumen del Pedido</h5>
                         </div>
                         <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <span>
+                                        Sub Total
+                                    </span>
+                                    <h4 class="font-noraml">
+                                        S/<%=pedido.calcularSubTotal()%>
+                                    </h4>
+                                </div>
+                                <div class="col-lg-8">
+                                    <span>
+                                        Descuento
+                                    </span>
+                                    <h4 class="font-noraml">
+                                        S/<%=pedido.calcularDescuento()%>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr/>
                             <span>
                                 Total
                             </span>

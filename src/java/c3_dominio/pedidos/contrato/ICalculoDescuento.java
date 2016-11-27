@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.contrato;
 
@@ -14,6 +33,12 @@ import c3_dominio.pedidos.entidad.Pedido;
  */
 public interface ICalculoDescuento {
 
+    /**
+     * <b>Interface de Regla de Negocio</b>
+     * Interface de calcular desciento.
+     * @param pedido
+     * @return 
+     */
     public double calcularDescuento(Pedido pedido);
 
   

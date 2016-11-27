@@ -12,6 +12,8 @@ import c3_dominio.pedidos.entidad.Pedido;
 import c3_dominio.ventas.entidad.Venta;
 import c4_persistencia.GestorJDBC;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,8 +53,10 @@ public class VentaDAOPostgre implements IVentaDAO {
             sentencia.setInt(1, venta.getPedido().getMesa().getMesaid());
             sentencia.executeUpdate();
             sentencia.close();
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(VentaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

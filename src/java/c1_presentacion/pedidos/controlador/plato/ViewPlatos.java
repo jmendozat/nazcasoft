@@ -16,6 +16,8 @@ import c3_dominio.pedidos.contrato.ICalculoDescuento;
 import c3_dominio.pedidos.servicio.factoryestrategia.FabricaEstrategia;
 import c5_transversal.excepciones.ExcepcionRegla;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,15 +34,14 @@ public class ViewPlatos extends GestionarPlatoComando {
             request.setAttribute("listViewPlatos", listaPlatos);
             Pedido pedido = new Pedido();
             FabricaEstrategia fabricaEstrategia = FabricaEstrategia.getInstancia();
-                    ICalculoDescuento estrategiaDescuento = fabricaEstrategia.crearCalculoDescuento(pedido);
-                    pedido.setEstrategiadescuento(estrategiaDescuento);
+            ICalculoDescuento estrategiaDescuento = fabricaEstrategia.crearCalculoDescuento(pedido);
+            pedido.setEstrategiadescuento(estrategiaDescuento);
             HttpSession sesionPedido = request.getSession(true);
             sesionPedido.setAttribute("pedido", pedido);
-        } catch (ExcepcionSQL | ExcepcionRegla e) {
-
+        } catch (ExcepcionRegla | ExcepcionSQL e) {
+            Logger.getLogger(ViewPlatos.class.getName()).log(Level.SEVERE, null, e);
         }
         return ruta;
     }
-  
 
 }

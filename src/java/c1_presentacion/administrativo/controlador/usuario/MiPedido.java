@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import c3_dominio.pedidos.entidad.Pedido;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,6 +31,7 @@ public class MiPedido extends GestionarUsuarioComando {
             }
 
         } catch (Exception e) {
+           Logger.getLogger(MiPedido.class.getName()).log(Level.SEVERE, null, e);
         }
         return url;
     }

@@ -1,9 +1,30 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.entidad;
+
+import c5_transversal.excepciones.ExcepcionRegla;
 
 /**
  *
@@ -51,35 +72,61 @@ public class LineaDePedido {
         this.plato = plato;
     }
     
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Metodo privado para validar la cantidad ingresada del plato al solicitar un pedido.
+     * @param cantidadSolicitada
+     * @throws Exception 
+     */
     private void validarCantidad(int cantidadSolicitada) throws Exception{
         if(cantidadSolicitada < 1 || cantidadSolicitada > 15)
-            throw new Exception("Error cantidad invalida");
+            throw ExcepcionRegla.crearErrorCantidadInvalida();
     }
     
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Metodo publico de validacion de cantidad.
+     * @throws Exception 
+     */
     public void validarCantidad() throws Exception{
         validarCantidad(cantidad);
     }
     
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Metodo publico de validacion de cantidad agregada
+     * @param cantidadAgregada
+     * @throws Exception 
+     */
     public void validarCantidadAgregada(int cantidadAgregada) throws Exception{
         validarCantidad(cantidadAgregada);
         int cantidadActualizada = cantidad + cantidadAgregada;
         validarCantidad(cantidadActualizada);
     }
     
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * Validacion de cantidad actualizada
+     * @param cantidadActualizada
+     * @throws Exception 
+     */
     public void validarCantidadActualizada(int cantidadActualizada) throws Exception{
         validarCantidad(cantidadActualizada);
     }
     
-    // regla de negocio
+   /**
+    * <b>Regla De Negocio</b>
+    * Este metodo calcula el sub total por cada item agregado al pedido.
+    * @return 
+    */
     public double calcularSubTotal(){
         return cantidad * precio;
     }
     
-    // regla de negocio
+    /**
+     * <b>Regla De Negocio</b>
+     * @param cantidadAgregada 
+     */
     public void agregarCantidad(int cantidadAgregada){
         cantidad = cantidad + cantidadAgregada;
     }

@@ -22,21 +22,21 @@ public class ConfController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String urlServlet = req.getServletPath();
-        ConfiguracionComando confComando = ConfiguracionComando.instanciarComando(urlServlet.substring(1));
-        String url = confComando.ejecutar(req, resp);
-        RequestDispatcher despachador = req.getRequestDispatcher(url);
-        despachador.forward(req, resp);
+        gestionarConfController(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        gestionarConfController(req, resp);
+
+    }
+
+    private void gestionarConfController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String urlServlet = req.getServletPath();
         ConfiguracionComando confComando = ConfiguracionComando.instanciarComando(urlServlet.substring(1));
         String url = confComando.ejecutar(req, resp);
         RequestDispatcher despachador = req.getRequestDispatcher(url);
         despachador.forward(req, resp);
-
     }
 
 }

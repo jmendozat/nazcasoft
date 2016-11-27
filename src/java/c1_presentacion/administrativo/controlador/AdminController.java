@@ -22,20 +22,18 @@ public class AdminController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String urlServlet = req.getServletPath();
-        GestionarAdministrativoComando gestionarAdministrativoComando = GestionarAdministrativoComando.instanciarComando(urlServlet.substring(1));
-        String url = gestionarAdministrativoComando.ejecutar(req, resp);
-        RequestDispatcher despachador = req.getRequestDispatcher(url);
-        despachador.forward(req, resp);
+        gestionarAdminController(req, resp);
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        gestionarAdminController(req, resp);
+    }
+
+    private void gestionarAdminController(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String urlServlet = req.getServletPath();
         GestionarAdministrativoComando gestionarAdministrativoComando = GestionarAdministrativoComando.instanciarComando(urlServlet.substring(1));
         String url = gestionarAdministrativoComando.ejecutar(req, resp);
         RequestDispatcher despachador = req.getRequestDispatcher(url);
         despachador.forward(req, resp);
     }
-
 }

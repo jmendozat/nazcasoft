@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import c4_persistencia.GestorJDBC;
 import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,10 +47,12 @@ public class PlatoDAOPostgre implements IPlatoDAO {
                 listaPlatos.add(plato);
             }
             resultado.close();
-            return listaPlatos;
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return listaPlatos;
     }
 
     @Override
@@ -62,10 +66,12 @@ public class PlatoDAOPostgre implements IPlatoDAO {
             registros_afectados = sentencia.executeUpdate();
             sentencia.close();
             if (registros_afectados == 0) {
-                throw new Exception("No se puede insertar");
+                throw ExcepcionSQL.crearErrorInsertar();
             }
-        } catch (Exception e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,10 +87,12 @@ public class PlatoDAOPostgre implements IPlatoDAO {
             registros_afectados = sentencia.executeUpdate();
             sentencia.close();
             if (registros_afectados == 0) {
-                throw new Exception("No se puede modificar");
+                throw ExcepcionSQL.crearErrorModificar();
             }
-        } catch (Exception e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,10 +107,12 @@ public class PlatoDAOPostgre implements IPlatoDAO {
             registros_afectados = sentencia.executeUpdate();
             sentencia.close();
             if (registros_afectados == 0) {
-                throw new Exception("No se puede eliminar");
+                throw ExcepcionSQL.crearErrorEliminar();
             }
-        } catch (Exception e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorEliminar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -118,10 +128,12 @@ public class PlatoDAOPostgre implements IPlatoDAO {
                 plato = crearObjetoPlato(resultado);
             }
             resultado.close();
-            return plato;
-        } catch (SQLException e) {
+        } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return plato;
     }
 
     private Plato crearObjetoPlato(ResultSet resultado) throws SQLException {

@@ -1,7 +1,26 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, 2016, Nazca. Todos los derechos reservados.
+ * NAZCA PROPIEDAD/CONFIDENCIAL. Use is subject to license terms.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
 package c3_dominio.pedidos.contrato;
 
@@ -16,7 +35,13 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public interface IPedidoDAO extends ICoreDAO<Pedido>{
-    
+    /**
+     * <b>Funcion de Acceso a Datos</b>
+     * Busca un pedido dado una mesa, retorna todo el pedido.
+     * @param mesa
+     * @return
+     * @throws ExcepcionSQL 
+     */
     public Pedido func_NAZCA_ADM_PEDIDO_Buscar(Mesa mesa)throws ExcepcionSQL;
     
 }

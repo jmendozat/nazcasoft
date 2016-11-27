@@ -11,6 +11,9 @@ import c2_aplicacion.pedidos.servicio.GestionarPlatoServicio;
 import c3_dominio.administrativo.entidad.Mensaje;
 import c3_dominio.pedidos.entidad.Pedido;
 import c3_dominio.pedidos.entidad.Plato;
+import c5_transversal.excepciones.ExcepcionSQL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AgregarPlato extends GestionarPedidoComando {
 
@@ -29,8 +32,10 @@ public class AgregarPlato extends GestionarPedidoComando {
             Plato plato = GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Buscar(platoid);
             Pedido pedido = (Pedido) request.getSession().getAttribute("pedido");
             pedido.agregarLineaDePedido(plato, cantidad);
-        } catch (Exception e) {
+        } catch (ExcepcionSQL e) {
             request.setAttribute("mensaje", e.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(AgregarPlato.class.getName()).log(Level.SEVERE, null, ex);
         }
         return url_forward;
     }

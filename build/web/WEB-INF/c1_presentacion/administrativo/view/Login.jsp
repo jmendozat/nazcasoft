@@ -42,11 +42,11 @@
                     </div>
                     <button type="submit" class="btn btn-primary block full-width m-b">Entrar</button>
 
-                    <a href="index.jsp"><small>¿Olvidaste tú constraseña?</small></a>
+                    <a href="index.html"><small>Ir al Portal</small></a>
                    <p class="text-muted text-center"><small>¿Aun no tienes tú cuenta?</small></p>
                    <a class="btn btn-sm btn-white btn-block" href="NuevoCliente">Crea una cuenta</a>
                 </form>
-                <p class="m-t"> <small>Sistema de adminsitración by <a href="#"> Lain Cardenas </a>&copy; 2015</small> </p>
+                <p class="m-t"> <small>Prototipo web NazcaSoft por <a href="#"> Lain Cardenas </a>&copy; 2015</small><br><small>Mantenimiento preventivo y correctivo de Software por  <a href="#"> Valentin Mendoza </a>&copy; 2016</small> </p>
             </div>
         </div>
 
