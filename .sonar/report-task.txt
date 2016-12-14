@@ -1,5 +1,5 @@
-projectKey=NazcaSoft_Beta
+projectKey=NazcaSoft_V2
 serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/NazcaSoft_Beta
-ceTaskId=AViKjxHNczUCohaNQEWx
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AViKjxHNczUCohaNQEWx
+dashboardUrl=http://localhost:9000/dashboard/index/NazcaSoft_V2
+ceTaskId=AViphIGTD4_rdqgTgZmc
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AViphIGTD4_rdqgTgZmc
