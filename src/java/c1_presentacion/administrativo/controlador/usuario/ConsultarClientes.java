@@ -26,7 +26,7 @@ public class ConsultarClientes extends GestionarUsuarioComando{
        String url="/WEB-INF/c1_presentacion/pedidos/view/pedido/PageItemsCliente.jsp";
         try {
             String desc = request.getParameter("descCliente").trim().toUpperCase();
-            List<Persona> listClient = GestionarPersonaServicio.getInstancia().func_NAZCA_ADM_CLIENTE_Buscar(desc);
+            List<Persona> listClient = GestionarPersonaServicio.getInstancia().buscar(desc);
             request.setAttribute("listClientes", listClient);
         } catch (ExcepcionSQL e) {
             Logger.getLogger(ConsultarClientes.class.getName()).log(Level.SEVERE, null, e);

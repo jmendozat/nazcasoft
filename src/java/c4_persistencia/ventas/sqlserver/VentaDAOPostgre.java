@@ -29,7 +29,7 @@ public class VentaDAOPostgre implements IVentaDAO {
     }
 
     @Override
-    public void func_NAZCA_CORE_Registrar(Venta venta) throws ExcepcionSQL {
+    public void registrar(Venta venta) throws ExcepcionSQL {
         try {
             String sentenciaSQL = "insert into venta values (?,?,?,?,?,?)";
             String sentenciaSQL1 = "update pedido set estado = ? where pedidoid = ?";
@@ -61,22 +61,22 @@ public class VentaDAOPostgre implements IVentaDAO {
     }
 
     @Override
-    public void func_NAZCA_CORE_Modificar(Venta venta) throws ExcepcionSQL {
+    public void modificar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CORE_Activar(Venta venta) throws ExcepcionSQL {
+    public void activar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CORE_Desactivar(Venta venta) throws ExcepcionSQL {
+    public void desactivar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Venta func_NAZCA_CORE_Buscar(int codigo) throws ExcepcionSQL {
+    public Venta buscar(int codigo) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

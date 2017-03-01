@@ -35,6 +35,19 @@ import c5_transversal.excepciones.ExcepcionSQL;
  */
 public interface IPersonaDAO extends ICrudDAO<Persona>{
     
-    public int func_NAZCA_ADM_CLIENTE_Crear(Persona persona)throws ExcepcionSQL;
-    public List<Persona> func_NAZCA_ADM_CLIENTE_Buscar(String nombre)throws ExcepcionSQL;
+    /**
+     * 
+     * @param persona
+     * @return
+     * @throws ExcepcionSQL 
+     */
+    public int crearPersona(Persona persona)throws ExcepcionSQL;
+    
+    /**
+     * 
+     * @param nombre
+     * @return
+     * @throws ExcepcionSQL 
+     */
+    public List<Persona> buscar(String nombre)throws ExcepcionSQL;
 }

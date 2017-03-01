@@ -48,27 +48,27 @@ public class PersonaDAOSQLServer implements IPersonaDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Crear(Persona persona) throws ExcepcionSQL {
+    public void crear(Persona persona) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Editar(Persona persona) throws ExcepcionSQL {
+    public void editar(Persona persona) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Eliminar(Persona persona) throws ExcepcionSQL {
+    public void eliminar(Persona persona) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Persona func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Persona buscar(int id) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int func_NAZCA_ADM_CLIENTE_Crear(Persona persona) throws ExcepcionSQL {
+    public int crearPersona(Persona persona) throws ExcepcionSQL {
         try {
             int codigopersona = 0;
             String sentenciaSQL = "insert into persona (fecharegistro, nombre,correo, isactivo, tipousuario,tipopersona,urlfotoperil) values (?,?,?,?,?,?,?)";
@@ -98,7 +98,7 @@ public class PersonaDAOSQLServer implements IPersonaDAO {
     }
 
     @Override
-    public List<Persona> func_NAZCA_ADM_CLIENTE_Buscar(String nombre) throws ExcepcionSQL {
+    public List<Persona> buscar(String nombre) throws ExcepcionSQL {
         ArrayList<Persona> listaClientes = new ArrayList();
         Persona persona;
         ResultSet resultado;

@@ -19,7 +19,7 @@ public class ConsultarMesasDePedido extends GestionarPedidoComando {
         String url_forward = "";
         try {
             int tipo = Integer.parseInt(request.getParameter("tipo"));
-            List<Mesa> listaMesas = GestionarMesaServicio.getInstancia().func_NAZCA_ADM_PEDIDOS_MESA_Listar();
+            List<Mesa> listaMesas = GestionarMesaServicio.getInstancia().listar();
             request.setAttribute("listaMesas", listaMesas);
             if (tipo > 10) {
                 url_forward = "/WEB-INF/c1_presentacion/pedidos/view/pedido/PageBuscarMesas.jsp";

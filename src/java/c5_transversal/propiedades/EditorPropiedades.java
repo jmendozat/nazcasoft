@@ -6,10 +6,12 @@
 package c5_transversal.propiedades;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.Properties;
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  *
@@ -19,20 +21,21 @@ import c3_dominio.administrativo.entidad.Conexion;
 public class EditorPropiedades {
 
     Properties propiedades;
+    InputStream inputStream;
     OutputStream ouputStream;
-
-    public EditorPropiedades() {
+    
+    public EditorPropiedades() throws IOException {
         try {
             propiedades = new Properties();
-            ouputStream = new FileOutputStream("c5_transversal/propiedades/Parametros.properties");
-
+            inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("c5_transversal/propiedades/Parametros.properties");
+            propiedades.load(inputStream);
         } catch (FileNotFoundException e) {
 
         }
-
+        
     }
 
-    public void modificarConexion(Conexion conexion) throws Exception {
+    public void modificarConexion(EConexion conexion) throws Exception {
         try {
             propiedades.setProperty("claseFabricaDAO", conexion.getFabrica());
             propiedades.setProperty("userdb", conexion.getUsuario());
@@ -41,6 +44,17 @@ public class EditorPropiedades {
             propiedades.setProperty("puertodb", conexion.getPuerto());
             propiedades.setProperty("basededatos", conexion.getBaseDatos());
         } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    public void modificarEstrategia(String estrategia)throws Exception{
+        try {
+            propiedades.setProperty("fabricaEstrategia", "c3_dominio.pedidos.servicio.estrategias."+estrategia);
+            
+            System.out.println("Se modifico la estrategia a "+estrategia);
+        } catch (Exception e) {
+            System.out.println("Ha entrado a la excepcion");
             throw e;
         }
     }

@@ -25,7 +25,7 @@
 package c4_persistencia;
 
 import c3_dominio.administrativo.contrato.IConexion;
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
 import c5_transversal.propiedades.EditorPropiedades;
 import c5_transversal.propiedades.LectorPropiedades;
 
@@ -37,7 +37,7 @@ import c5_transversal.propiedades.LectorPropiedades;
 public class PConexion implements IConexion {
 
     @Override
-    public void func_NAZCA_ADM_Editar(Conexion conexion) throws Exception {
+    public void func_NAZCA_ADM_Editar(EConexion conexion) throws Exception {
         try {
             EditorPropiedades editorProperties = new EditorPropiedades();
             editorProperties.modificarConexion(conexion);
@@ -47,9 +47,9 @@ public class PConexion implements IConexion {
     }
 
     @Override
-    public Conexion func_NAZCA_ADM_Mostrar() throws Exception {
+    public EConexion func_NAZCA_ADM_Mostrar() throws Exception {
         try {
-            Conexion conexion = new Conexion(LectorPropiedades.getInstancia().getUserDB(),
+            EConexion conexion = new EConexion(LectorPropiedades.getInstancia().getUserDB(),
                     LectorPropiedades.getInstancia().getPasswordDB(),
                     LectorPropiedades.getInstancia().getServidor(),
                     LectorPropiedades.getInstancia().getPuerto(),

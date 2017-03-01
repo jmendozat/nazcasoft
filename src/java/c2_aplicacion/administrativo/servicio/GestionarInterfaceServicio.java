@@ -36,10 +36,10 @@ public class GestionarInterfaceServicio{
     }
 
     
-    public List<Interface> func_NAZCA_ADM_ObtenerModulosPorUsuario(int codigoUsuario) throws ExcepcionSQL {
+    public List<Interface> obtenerModulosPorUsuario(int codigoUsuario) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            List<Interface> listaInterface = interfaceDAO.func_NAZCA_ADM_ObtenerModulosPorUsuario(codigoUsuario);
+            List<Interface> listaInterface = interfaceDAO.obtenerModulosPorUsuario(codigoUsuario);
             gestorJDBC.cerrarConexion();
             return listaInterface;
         } catch (ExcepcionSQL e) {
@@ -49,22 +49,22 @@ public class GestionarInterfaceServicio{
     }
 
     
-    public void func_NAZCA_CRUD_Crear(Interface objCrud) throws ExcepcionSQL {
+    public void crear(Interface objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public void func_NAZCA_CRUD_Editar(Interface objCrud) throws ExcepcionSQL {
+    public void editar(Interface objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public void func_NAZCA_CRUD_Eliminar(Interface objCrud) throws ExcepcionSQL {
+    public void eliminar(Interface objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public Interface func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Interface buscar(int id) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

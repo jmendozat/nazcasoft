@@ -19,7 +19,7 @@ public class ConsultarPlato extends GestionarPlatoComando{
         int platoid = Integer.parseInt(request.getParameter("platoid"));                
         try{
             
-            Plato plato = GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Buscar(platoid);
+            Plato plato = GestionarPlatoServicio.getInstancia().buscar(platoid);
             if(plato != null){
                 request.setAttribute("plato", plato);
                 url_forward = "/WEB-INF/c1_presentacion/pedidos/view/plato/PageEditarPlato.jsp";

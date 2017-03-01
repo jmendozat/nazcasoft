@@ -45,10 +45,10 @@ public class GestionarUsuarioServicio {
         permisoDAO = fabricaAdministrativoDAO.crearPermisoDAO(gestorJDBC);
     }
 
-    public Persona func_NAZCA_ADM_Login(Usuario usuario) throws ExcepcionSQL {
+    public Persona login(Usuario usuario) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            Persona persona = usuarioDAO.func_NAZCA_ADM_Login(usuario);
+            Persona persona = usuarioDAO.login(usuario);
             gestorJDBC.cerrarConexion();
 
             return persona;
@@ -58,14 +58,14 @@ public class GestionarUsuarioServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Crear(Usuario usuario) throws ExcepcionSQL {
+    public void crear(Usuario usuario) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
             Persona persona = usuario.getPersona();
-            persona.setCodigo(personaDAO.func_NAZCA_ADM_CLIENTE_Crear(persona));
+            persona.setCodigo(personaDAO.crearPersona(persona));
             usuario.setPersona(persona);
-            usuarioDAO.func_NAZCA_CRUD_Crear(usuario);
+            usuarioDAO.crear(usuario);
             Permiso permiso = new Permiso();
             permiso.setUsuario(usuario);
             for(int i=0; i<Permiso.DEFAULT_CLIENTE.length; i++){
@@ -73,7 +73,7 @@ public class GestionarUsuarioServicio {
                 intFace.setCodigoInterface(Permiso.DEFAULT_CLIENTE[i]);
                 permiso.agregarInterface(intFace);
             }
-            permisoDAO.func_NAZCA_CRUD_Crear(permiso);
+            permisoDAO.crear(permiso);
             gestorJDBC.terminarTransaccion();
         } catch (ExcepcionSQL e) {
             gestorJDBC.cerrarConexion();
@@ -81,15 +81,15 @@ public class GestionarUsuarioServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Editar(Usuario usuario) throws ExcepcionSQL {
+    public void editar(Usuario usuario) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void func_NAZCA_CRUD_Eliminar(Usuario usuario) throws ExcepcionSQL {
+    public void eliminar(Usuario usuario) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Usuario func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Usuario buscar(int id) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

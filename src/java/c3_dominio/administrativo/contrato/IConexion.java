@@ -24,7 +24,7 @@
  */
 package c3_dominio.administrativo.contrato;
 
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
 
 /**
  *
@@ -33,7 +33,7 @@ import c3_dominio.administrativo.entidad.Conexion;
  */
 public interface IConexion {
     
-    public void func_NAZCA_ADM_Editar(Conexion conexion)throws Exception;
-    public Conexion func_NAZCA_ADM_Mostrar()throws Exception;
+    public void func_NAZCA_ADM_Editar(EConexion conexion)throws Exception;
+    public EConexion func_NAZCA_ADM_Mostrar()throws Exception;
     
 }

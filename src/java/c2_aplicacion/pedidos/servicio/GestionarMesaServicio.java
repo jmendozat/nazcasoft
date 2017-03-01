@@ -38,10 +38,10 @@ public class GestionarMesaServicio {
     }
 
     
-    public List<Mesa> func_NAZCA_ADM_PEDIDOS_MESA_Listar() throws ExcepcionSQL {
+    public List<Mesa> listar() throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            List<Mesa> listaMesa = mesaDAO.func_NAZCA_ADM_PEDIDOS_MESA_Listar();
+            List<Mesa> listaMesa = mesaDAO.listar();
             gestorJDBC.cerrarConexion();
             return listaMesa;
         } catch (ExcepcionSQL e) {
@@ -51,30 +51,30 @@ public class GestionarMesaServicio {
     }
 
     
-    public void func_NAZCA_ADM_PEDIDOS_MESA_Modificar(Mesa mesa) throws ExcepcionSQL {
+    public void modificar(Mesa mesa) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public void func_NAZCA_CRUD_Crear(Mesa objCrud) throws ExcepcionSQL {
+    public void crear(Mesa objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public void func_NAZCA_CRUD_Editar(Mesa objCrud) throws ExcepcionSQL {
+    public void editar(Mesa objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public void func_NAZCA_CRUD_Eliminar(Mesa objCrud) throws ExcepcionSQL {
+    public void eliminar(Mesa objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public Mesa func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Mesa buscar(int id) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            Mesa mesa = mesaDAO.func_NAZCA_CRUD_Buscar(id);
+            Mesa mesa = mesaDAO.buscar(id);
             gestorJDBC.cerrarConexion();
             return mesa;
         } catch (ExcepcionSQL e) {

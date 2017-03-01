@@ -42,6 +42,6 @@ public interface IPedidoDAO extends ICoreDAO<Pedido>{
      * @return
      * @throws ExcepcionSQL 
      */
-    public Pedido func_NAZCA_ADM_PEDIDO_Buscar(Mesa mesa)throws ExcepcionSQL;
+    public Pedido buscar(Mesa mesa)throws ExcepcionSQL;
     
 }

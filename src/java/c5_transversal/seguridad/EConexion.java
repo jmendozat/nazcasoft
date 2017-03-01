@@ -22,14 +22,14 @@
  *
  *
  */
-package c3_dominio.administrativo.entidad;
+package c5_transversal.seguridad;
 
 /**
  *
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class Conexion {
+public class EConexion {
     private String usuario;
     private String password;
     private String servidor;
@@ -37,7 +37,7 @@ public class Conexion {
     private String baseDatos;
     private String fabrica;
 
-    public Conexion(String usuario, String password, String servidor, String puerto, String baseDatos, String fabrica) {
+    public EConexion(String usuario, String password, String servidor, String puerto, String baseDatos, String fabrica) {
         this.usuario = usuario;
         this.password = password;
         this.servidor = servidor;

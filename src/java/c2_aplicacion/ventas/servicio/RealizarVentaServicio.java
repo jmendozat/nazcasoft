@@ -16,55 +16,52 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class RealizarVentaServicio{
+public class RealizarVentaServicio {
+
     GestorJDBC gestorJDBC;
     IVentaDAO ventaDAO;
-    
+
     private static RealizarVentaServicio instancia;
-    
-    public static RealizarVentaServicio getInstancia(){
-     if(instancia==null)
-         instancia = new RealizarVentaServicio();
-     return instancia;
+
+    public static RealizarVentaServicio getInstancia() {
+        if (instancia == null) {
+            instancia = new RealizarVentaServicio();
+        }
+        return instancia;
     }
 
     public RealizarVentaServicio() {
         FabricaVentasDAO fabricaVentasDAO = FabricaVentasDAO.getInstancia();
         gestorJDBC = fabricaVentasDAO.crearGestorJDBC();
-        ventaDAO=fabricaVentasDAO.crearVentaDAO(gestorJDBC);
+        ventaDAO = fabricaVentasDAO.crearVentaDAO(gestorJDBC);
     }
 
-    
-    public void func_NAZCA_CORE_Registrar(Venta venta) throws ExcepcionSQL {
+    public void registrar(Venta venta) throws ExcepcionSQL {
         try {
-             gestorJDBC.abrirConexion();
+            gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
-            ventaDAO.func_NAZCA_CORE_Registrar(venta);
+            ventaDAO.registrar(venta);
             gestorJDBC.terminarTransaccion();
         } catch (ExcepcionSQL e) {
             gestorJDBC.cancelarTransaccion();
             throw e;
-            
+
         }
     }
 
-    
-    public void func_NAZCA_CORE_Modificar(Venta venta) throws ExcepcionSQL {
+    public void modificar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public void func_NAZCA_CORE_Activar(Venta venta) throws ExcepcionSQL {
+    public void activar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public void func_NAZCA_CORE_Desactivar(Venta venta) throws ExcepcionSQL {
+    public void desactivar(Venta venta) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public Venta func_NAZCA_CORE_Buscar(int codigo) throws ExcepcionSQL {
+    public Venta buscar(int codigo) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

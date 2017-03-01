@@ -38,7 +38,7 @@ public class GuardarVenta extends GestionarVentaComando {
                 venta.setTotal(pedido.calcularTotal());
                 venta.setMontoRecibido(montorecibido);
                 venta.setVuelto(venta.calcularVuelto());
-                RealizarVentaServicio.getInstancia().func_NAZCA_CORE_Registrar(venta);
+                RealizarVentaServicio.getInstancia().registrar(venta);
                 HttpSession sesionUsuario = request.getSession(false);
                 sesionUsuario.setAttribute("pedido", null);
                 

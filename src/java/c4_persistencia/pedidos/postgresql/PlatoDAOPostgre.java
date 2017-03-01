@@ -31,7 +31,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
     }
 
     @Override
-    public List<Plato> func_NAZCA_PEDIDO_BuscarPlatoPorNombre(String nombre) throws ExcepcionSQL {
+    public List<Plato> buscarPlatoPorNombre(String nombre) throws ExcepcionSQL {
         ArrayList<Plato> listaPlatos = new ArrayList();
         Plato plato;
         ResultSet resultado;
@@ -56,7 +56,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Crear(Plato plato) throws ExcepcionSQL {
+    public void crear(Plato plato) throws ExcepcionSQL {
         int registros_afectados;
         String sentenciaSQL = "insert into plato(nombre, precio, descripcion, urlfoto, estado, isactivo) values(?,?,?,?,?,?)";
         try {
@@ -76,7 +76,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Editar(Plato plato) throws ExcepcionSQL {
+    public void editar(Plato plato) throws ExcepcionSQL {
         int registros_afectados;
         String sentenciaSQL = "update plato set nombre = ?, precio = ?, descripcion = ?, urlfoto = ?, estado = ?, isactivo = ? where platoid = ?";
         try {
@@ -97,7 +97,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Eliminar(Plato plato) throws ExcepcionSQL {
+    public void eliminar(Plato plato) throws ExcepcionSQL {
         int registros_afectados;
         String sentenciaSQL = "delete from plato where platoid = ?";
         try {
@@ -117,7 +117,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
     }
 
     @Override
-    public Plato func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Plato buscar(int id) throws ExcepcionSQL {
         Plato plato = null;
         ResultSet resultado;
         String sentenciaSQL = "select platoid, nombre, precio, descripcion, urlfoto, estado, isactivo"

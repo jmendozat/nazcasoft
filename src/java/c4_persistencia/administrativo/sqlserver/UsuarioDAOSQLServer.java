@@ -47,7 +47,7 @@ public class UsuarioDAOSQLServer implements IUsuarioDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Crear(Usuario usuario) throws ExcepcionSQL {
+    public void crear(Usuario usuario) throws ExcepcionSQL {
         try {
             String sentenciaSQL = "insert into usuario (codigopersona, emailcuenta, upassword, isactivo) values(?,?,?,?)";
             PreparedStatement sentencia;
@@ -64,22 +64,22 @@ public class UsuarioDAOSQLServer implements IUsuarioDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Editar(Usuario objCrud) throws ExcepcionSQL {
+    public void editar(Usuario objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Eliminar(Usuario objCrud) throws ExcepcionSQL {
+    public void eliminar(Usuario objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Usuario func_NAZCA_CRUD_Buscar(int id)throws ExcepcionSQL{
+    public Usuario buscar(int id)throws ExcepcionSQL{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Persona func_NAZCA_ADM_Login(Usuario usuario) throws ExcepcionSQL {
+    public Persona login(Usuario usuario) throws ExcepcionSQL {
         try {
             Persona persona = null;
             String consultaSQL = "SELECT \n"

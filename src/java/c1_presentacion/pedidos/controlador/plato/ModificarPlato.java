@@ -35,7 +35,7 @@ public class ModificarPlato extends GestionarPlatoComando {
         }        
         try {
             
-            GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Editar(plato);
+            GestionarPlatoServicio.getInstancia().editar(plato);
             request.setAttribute("mensaje", "Registro Modificado");            
         } catch (ExcepcionSQL e) {
             request.setAttribute("mensaje", e.getMessage());            

@@ -28,7 +28,7 @@ public class GestionarPedido extends GestionarPedidoComando {
         String url_forward = "/WEB-INF/c1_presentacion/pedidos/view/pedido/PageNewPedido.jsp";
         int mesaid = Integer.parseInt(request.getParameter("mesaid"));
         try {
-            Mesa mesa = GestionarMesaServicio.getInstancia().func_NAZCA_CRUD_Buscar(mesaid);
+            Mesa mesa = GestionarMesaServicio.getInstancia().buscar(mesaid);
             if (mesa != null) {
                 if (mesa.isDisponible()) {
                     Pedido pedido;

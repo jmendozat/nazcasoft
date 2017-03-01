@@ -8,7 +8,7 @@ package c1_presentacion.administrativo.controlador.config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import c2_aplicacion.administrativo.servicio.GestionarConexion;
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
 
 /**
  *
@@ -19,9 +19,9 @@ public class ConexionServicio extends ConfiguracionComando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        String url_servlet = "/WEB-INF/c1_presentacion/administrativo/view/config/PageConfConexion.jsp";
+        String url_servlet = "/WEB-INF/c1_presentacion/administrativo/view/config/PageConfEstrategy.html";
         try {
-            Conexion conexion = GestionarConexion.getInstancia().func_NAZCA_ADM_Mostrar();
+            EConexion conexion = GestionarConexion.getInstancia().mostrar();
             request.setAttribute("conexion", conexion);
         } catch (Exception e) {
         }

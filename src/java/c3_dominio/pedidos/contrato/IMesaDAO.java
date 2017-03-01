@@ -36,7 +36,18 @@ import c5_transversal.excepciones.ExcepcionSQL;
  */
 public interface IMesaDAO extends ICrudDAO<Mesa> {
 
-    public List<Mesa> func_NAZCA_ADM_PEDIDOS_MESA_Listar() throws ExcepcionSQL;
-    public void func_NAZCA_ADM_PEDIDOS_MESA_Modificar(Mesa mesa)throws ExcepcionSQL;
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSQL 
+     */
+    public List<Mesa> listar() throws ExcepcionSQL;
+    
+    /**
+     * 
+     * @param mesa
+     * @throws ExcepcionSQL 
+     */
+    public void modificar(Mesa mesa)throws ExcepcionSQL;
 
 }

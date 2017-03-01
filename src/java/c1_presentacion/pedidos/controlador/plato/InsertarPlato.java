@@ -35,7 +35,7 @@ public class InsertarPlato extends GestionarPlatoComando {
             return url_forward;
         }        
         try {            
-            GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Crear(plato);
+            GestionarPlatoServicio.getInstancia().crear(plato);
         } catch (ExcepcionSQL e) {
             request.setAttribute("mensaje", e.getMessage());            
         } catch (ExcepcionRegla ex) {

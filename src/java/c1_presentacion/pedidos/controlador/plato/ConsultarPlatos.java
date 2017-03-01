@@ -24,7 +24,7 @@ public class ConsultarPlatos extends GestionarPlatoComando{
         String url_forward = "/WEB-INF/c1_presentacion/pedidos/view/plato/PageBuscarPlatos.jsp";  
         String nombre = request.getParameter("nombreplato").trim().toUpperCase();                
         try{  
-            List<Plato> listaPlatos = GestionarPlatoServicio.getInstancia().func_NAZCA_PEDIDO_BuscarPlatoPorNombre(nombre);
+            List<Plato> listaPlatos = GestionarPlatoServicio.getInstancia().buscarPlatoPorNombre(nombre);
             request.setAttribute("listaPlatos", listaPlatos);
         }
         catch(ExcepcionSQL e){

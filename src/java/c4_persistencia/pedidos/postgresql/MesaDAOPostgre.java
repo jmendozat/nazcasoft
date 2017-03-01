@@ -32,7 +32,7 @@ public class MesaDAOPostgre implements IMesaDAO {
     }
 
     @Override
-    public List<Mesa> func_NAZCA_ADM_PEDIDOS_MESA_Listar() throws ExcepcionSQL {
+    public List<Mesa> listar() throws ExcepcionSQL {
         ArrayList<Mesa> listaMesas = new ArrayList<>();
         Mesa mesa;
         ResultSet resultado;
@@ -61,17 +61,17 @@ public class MesaDAOPostgre implements IMesaDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Crear(Mesa mesa) throws ExcepcionSQL {
+    public void crear(Mesa mesa) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Editar(Mesa mesa) throws ExcepcionSQL {
+    public void editar(Mesa mesa) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Eliminar(Mesa mesa) throws ExcepcionSQL {
+    public void eliminar(Mesa mesa) throws ExcepcionSQL {
         try {
             String sentenciaSQL = "delete from mesa where idmesa= ?";
             PreparedStatement sentencia;
@@ -86,7 +86,7 @@ public class MesaDAOPostgre implements IMesaDAO {
     }
 
     @Override
-    public Mesa func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Mesa buscar(int id) throws ExcepcionSQL {
         Mesa mesa = null;
         ResultSet resultado;
         String sentenciaSQL = "SELECT  m.mesaid,\n"
@@ -127,7 +127,7 @@ public class MesaDAOPostgre implements IMesaDAO {
     }
 
     @Override
-    public void func_NAZCA_ADM_PEDIDOS_MESA_Modificar(Mesa mesa) throws ExcepcionSQL {
+    public void modificar(Mesa mesa) throws ExcepcionSQL {
         int registros_afectados;
         String sentenciaSQL = "update mesa set disponible = ? where mesaid = ?";
         try {

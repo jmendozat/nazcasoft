@@ -6,7 +6,7 @@
 package c2_aplicacion.administrativo.servicio;
 
 import c3_dominio.administrativo.contrato.IConexion;
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
 import c4_persistencia.PConexion;
 
 /**
@@ -30,7 +30,7 @@ public class GestionarConexion {
         iconexion = new PConexion();
     }
 
-    public void func_NAZCA_ADM_Editar(Conexion conexion) throws Exception {
+    public void editar(EConexion conexion) throws Exception {
         try {
             iconexion.func_NAZCA_ADM_Editar(conexion);
         } catch (Exception e) {
@@ -38,9 +38,9 @@ public class GestionarConexion {
         }
     }
 
-    public Conexion func_NAZCA_ADM_Mostrar() throws Exception {
+    public EConexion mostrar() throws Exception {
         try {
-            Conexion conex = iconexion.func_NAZCA_ADM_Mostrar();
+            EConexion conex = iconexion.func_NAZCA_ADM_Mostrar();
             return conex;
         } catch (Exception e) {
             throw e;

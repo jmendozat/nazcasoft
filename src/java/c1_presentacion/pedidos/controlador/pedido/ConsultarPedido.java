@@ -30,10 +30,10 @@ public class ConsultarPedido extends GestionarPedidoComando {
         try {
 
             int mesaid = Integer.parseInt(request.getParameter("mesaid"));
-            Mesa mesa = GestionarMesaServicio.getInstancia().func_NAZCA_CRUD_Buscar(mesaid);
+            Mesa mesa = GestionarMesaServicio.getInstancia().buscar(mesaid);
             if (mesa != null) {
                 Pedido pedido;
-                pedido = RealizarPedidoServicio.getInstancia().func_NAZCA_ADM_PEDIDO_Buscar(mesa);
+                pedido = RealizarPedidoServicio.getInstancia().buscar(mesa);
                 FabricaEstrategia fabricaEstrategia = FabricaEstrategia.getInstancia();
                 ICalculoDescuento estrategiaDescuento = fabricaEstrategia.crearCalculoDescuento(pedido);
                 pedido.setEstrategiadescuento(estrategiaDescuento);

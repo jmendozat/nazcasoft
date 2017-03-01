@@ -31,6 +31,7 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * La interfaz generica {@code ICoreDAO<T> } contiene los metodos generales de un CORE,
  * el cual tendran que ser implementados los casos de uso tipo core identificados por cada modulo del sistema.
  * 
+ * @param <T>
  * @see model.transversal.excepciones 
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
@@ -41,32 +42,30 @@ public interface ICrudDAO<T> {
     /**
      * 
      * @param objCrud
-     * @return
      * @throws ExcepcionSQL 
      */
-    public void func_NAZCA_CRUD_Crear(T objCrud)throws ExcepcionSQL;
+    public void crear(T objCrud)throws ExcepcionSQL;
     
     /**
      * 
      * @param objCrud
-     * @return
      * @throws ExcepcionSQL 
      */
-    public void func_NAZCA_CRUD_Editar(T objCrud)throws ExcepcionSQL;
+    public void editar(T objCrud)throws ExcepcionSQL;
     
     /**
      * 
      * @param objCrud
-     * @return
      * @throws ExcepcionSQL 
      */
-    public void func_NAZCA_CRUD_Eliminar(T objCrud)throws ExcepcionSQL;
+    public void eliminar(T objCrud)throws ExcepcionSQL;
     
     /**
      * 
      * @param id
      * @return 
+     * @throws c5_transversal.excepciones.ExcepcionSQL 
      */
-    public T func_NAZCA_CRUD_Buscar(int id)throws ExcepcionSQL;
+    public T buscar(int id)throws ExcepcionSQL;
     
 }

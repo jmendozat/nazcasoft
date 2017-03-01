@@ -35,6 +35,12 @@ import c5_transversal.excepciones.ExcepcionSQL;
  */
 public interface IInterfaceDAO extends ICrudDAO<Interface>{
     
-     public List<Interface> func_NAZCA_ADM_ObtenerModulosPorUsuario(int codigoUsuario) throws ExcepcionSQL;
+    /**
+     * 
+     * @param codigoUsuario
+     * @return
+     * @throws ExcepcionSQL 
+     */
+     public List<Interface> obtenerModulosPorUsuario(int codigoUsuario) throws ExcepcionSQL;
      
 }

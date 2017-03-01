@@ -35,7 +35,7 @@ public class ConfirmarPedido extends GestionarPedidoComando {
             pedido.setUsuario(usuario);
             Persona cliente = (Persona) request.getSession().getAttribute("sesUsuario");
             pedido.setCliente(cliente);
-            RealizarPedidoServicio.getInstancia().func_NAZCA_CORE_Registrar(pedido);
+            RealizarPedidoServicio.getInstancia().registrar(pedido);
             pedido = new Pedido();
             HttpSession sesionPedido = request.getSession(true);
             sesionPedido.setAttribute("pedido", pedido);

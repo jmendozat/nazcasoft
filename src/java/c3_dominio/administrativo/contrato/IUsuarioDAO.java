@@ -34,7 +34,12 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public interface IUsuarioDAO extends ICrudDAO<Usuario>{
-    
-    public Persona func_NAZCA_ADM_Login(Usuario usuario)throws ExcepcionSQL;
+    /**
+     * 
+     * @param usuario
+     * @return
+     * @throws ExcepcionSQL 
+     */
+    public Persona login(Usuario usuario)throws ExcepcionSQL;
     
 }

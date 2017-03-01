@@ -78,6 +78,7 @@
         <servlet-name>ConfController</servlet-name>
         <url-pattern>/ConexionServicio</url-pattern>
         <url-pattern>/GuardarConexion</url-pattern>
+        <url-pattern>/ModificarEstrategia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

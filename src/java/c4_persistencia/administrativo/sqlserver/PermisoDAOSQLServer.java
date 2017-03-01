@@ -46,7 +46,7 @@ public class PermisoDAOSQLServer implements IPermisoDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Crear(Permiso permiso) throws ExcepcionSQL {
+    public void crear(Permiso permiso) throws ExcepcionSQL {
         try {
             String sentenciaSQL = "insert into permiso(codigousuario, codigointerface) values(?,?)";
             PreparedStatement sentencia;
@@ -63,17 +63,17 @@ public class PermisoDAOSQLServer implements IPermisoDAO {
     }
 
     @Override
-    public void func_NAZCA_CRUD_Editar(Permiso objCrud) throws ExcepcionSQL {
+    public void editar(Permiso objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CRUD_Eliminar(Permiso objCrud) throws ExcepcionSQL {
+    public void eliminar(Permiso objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Permiso func_NAZCA_CRUD_Buscar(int id)throws ExcepcionSQL{
+    public Permiso buscar(int id)throws ExcepcionSQL{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

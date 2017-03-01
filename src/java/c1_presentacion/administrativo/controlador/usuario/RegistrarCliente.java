@@ -30,7 +30,7 @@ public class RegistrarCliente extends GestionarUsuarioComando{
              persona.setTipousuario(Persona.TIPOCLIENTE);
              persona.setTipopersona(Persona.NATURAL);
              Usuario usuario = new Usuario(persona,persona.getCorreo(),request.getParameter("password"));         
-             GestionarUsuarioServicio.getInstancia().func_NAZCA_CRUD_Crear(usuario);
+             GestionarUsuarioServicio.getInstancia().crear(usuario);
              HttpSession sesionPedido = request.getSession(true);
              sesionPedido.setAttribute("sesUsuario", persona);
         } catch (ExcepcionSQL e) {

@@ -30,7 +30,7 @@ public class ViewPlatos extends GestionarPlatoComando {
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
         String ruta = "/WEB-INF/c1_presentacion/pedidos/view/plato/PageViewPlatos.jsp";
         try {
-            List<Plato> listaPlatos = GestionarPlatoServicio.getInstancia().func_NAZCA_PEDIDO_BuscarPlatoPorNombre("");
+            List<Plato> listaPlatos = GestionarPlatoServicio.getInstancia().buscarPlatoPorNombre("");
             request.setAttribute("listViewPlatos", listaPlatos);
             Pedido pedido = new Pedido();
             FabricaEstrategia fabricaEstrategia = FabricaEstrategia.getInstancia();

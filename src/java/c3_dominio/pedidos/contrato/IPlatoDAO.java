@@ -42,5 +42,5 @@ public interface IPlatoDAO extends ICrudDAO<Plato>{
      * @return
      * @throws ExcepcionSQL 
      */
-    public List<Plato> func_NAZCA_PEDIDO_BuscarPlatoPorNombre(String nombre)throws ExcepcionSQL;
+    public List<Plato> buscarPlatoPorNombre(String nombre)throws ExcepcionSQL;
 }

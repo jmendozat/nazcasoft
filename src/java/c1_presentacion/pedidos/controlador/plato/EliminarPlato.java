@@ -23,7 +23,7 @@ public class EliminarPlato extends GestionarPlatoComando{
         String url_forward = "PageReturn.jsp";                
         Plato plato = new Plato(Integer.parseInt(request.getParameter("platoid")));        
         try{
-            GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Eliminar(plato);           
+            GestionarPlatoServicio.getInstancia().eliminar(plato);           
         }
         catch(ExcepcionSQL e){
             request.setAttribute("mensaje", e.getMessage()); 

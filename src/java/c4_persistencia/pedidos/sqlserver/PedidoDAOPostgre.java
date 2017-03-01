@@ -34,7 +34,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
     }
 
     @Override
-    public Pedido func_NAZCA_ADM_PEDIDO_Buscar(Mesa mesa) throws ExcepcionSQL {
+    public Pedido buscar(Mesa mesa) throws ExcepcionSQL {
         Pedido pedido = null;
         ResultSet resultado;
         PreparedStatement sentencia;
@@ -105,7 +105,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
     }
 
     @Override
-    public void func_NAZCA_CORE_Registrar(Pedido pedido) throws ExcepcionSQL {
+    public void registrar(Pedido pedido) throws ExcepcionSQL {
         int registros_afectados, pedidoid_maximo;
         PreparedStatement sentencia;
         ResultSet resultado;
@@ -153,7 +153,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
     }
 
     @Override
-    public void func_NAZCA_CORE_Modificar(Pedido pedido) throws ExcepcionSQL {
+    public void modificar(Pedido pedido) throws ExcepcionSQL {
         int registros_afectados;
         PreparedStatement sentencia;
         String sentenciaSQL1 = "delete from lineadepedido where pedidoid = ?";
@@ -186,17 +186,17 @@ public class PedidoDAOPostgre implements IPedidoDAO {
     }
 
     @Override
-    public void func_NAZCA_CORE_Activar(Pedido pedido) throws ExcepcionSQL {
+    public void activar(Pedido pedido) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void func_NAZCA_CORE_Desactivar(Pedido pedido) throws ExcepcionSQL {
+    public void desactivar(Pedido pedido) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Pedido func_NAZCA_CORE_Buscar(int codigo) throws ExcepcionSQL {
+    public Pedido buscar(int codigo) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

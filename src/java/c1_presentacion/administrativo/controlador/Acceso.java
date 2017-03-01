@@ -61,7 +61,7 @@ public class Acceso extends HttpServlet {
         usuario = req.getParameter("txtUsuario");
         password = req.getParameter("txtPassword");
         try {
-            Persona persona = GestionarUsuarioServicio.getInstancia().func_NAZCA_ADM_Login(new Usuario(usuario, password));
+            Persona persona = GestionarUsuarioServicio.getInstancia().login(new Usuario(usuario, password));
             if (persona != null) {
                 HttpSession sesionUsuario = req.getSession(true);
                 sesionUsuario.setAttribute("sesUsuario", persona);

@@ -41,10 +41,10 @@ public class RealizarPedidoServicio {
         return instancia;
     }
 
-    public Pedido func_NAZCA_ADM_PEDIDO_Buscar(Mesa mesa) throws ExcepcionSQL {
+    public Pedido buscar(Mesa mesa) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            Pedido pedido = pedidoDAO.func_NAZCA_ADM_PEDIDO_Buscar(mesa);
+            Pedido pedido = pedidoDAO.buscar(mesa);
             gestorJDBC.cerrarConexion();
             return pedido;
         } catch (ExcepcionSQL e) {
@@ -53,16 +53,16 @@ public class RealizarPedidoServicio {
         }
     }
 
-    public void func_NAZCA_CORE_Registrar(Pedido pedido) throws ExcepcionSQL, ExcepcionRegla {
+    public void registrar(Pedido pedido) throws ExcepcionSQL, ExcepcionRegla {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
             pedido.validarPedido();
             if (pedido.getPedidoid() == 0) {
-                pedidoDAO.func_NAZCA_CORE_Registrar(pedido);
-                mesaDAO.func_NAZCA_ADM_PEDIDOS_MESA_Modificar(pedido.getMesa());
+                pedidoDAO.registrar(pedido);
+                mesaDAO.modificar(pedido.getMesa());
             } else {
-                pedidoDAO.func_NAZCA_CORE_Modificar(pedido);
+                pedidoDAO.modificar(pedido);
             }
 
             gestorJDBC.terminarTransaccion();
@@ -72,12 +72,12 @@ public class RealizarPedidoServicio {
         }
     }
 
-    public void func_NAZCA_CORE_Modificar(Pedido pedido) throws ExcepcionSQL, ExcepcionRegla {
+    public void modificar(Pedido pedido) throws ExcepcionSQL, ExcepcionRegla {
         try {
             gestorJDBC.abrirConexion();
             gestorJDBC.iniciarTransaccion();
             pedido.validarPedido();
-            pedidoDAO.func_NAZCA_CORE_Modificar(pedido);
+            pedidoDAO.modificar(pedido);
             gestorJDBC.terminarTransaccion();
         } catch (ExcepcionRegla | ExcepcionSQL e) {
             gestorJDBC.cancelarTransaccion();
@@ -85,15 +85,15 @@ public class RealizarPedidoServicio {
         }
     }
 
-    public void func_NAZCA_CORE_Activar(Pedido pedido) throws ExcepcionSQL {
+    public void activar(Pedido pedido) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void func_NAZCA_CORE_Desactivar(Pedido pedido) throws ExcepcionSQL {
+    public void desactivar(Pedido pedido) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Pedido func_NAZCA_CORE_Buscar(int codigo) throws ExcepcionSQL {
+    public Pedido buscar(int codigo) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

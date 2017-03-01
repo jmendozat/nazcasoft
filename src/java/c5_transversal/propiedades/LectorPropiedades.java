@@ -62,5 +62,11 @@ public class LectorPropiedades {
     public String getBaseDeDatos() {
         return propiedades.getProperty("basededatos");
     }
+    
+    public String[] getListStrategy(){
+        String estrategias = propiedades.getProperty("");
+        String[] listaEstrategias = estrategias.split("_");
+        return listaEstrategias;
+    }
 
 }

@@ -34,12 +34,12 @@ public class GuardarPedido extends GestionarPedidoComando {
             idCliente = Integer.parseInt(request.getParameter("idCliente"));
             if (idCliente == MISMO_CLIENTE) {
                 pedido.setUsuario(usuario);
-                RealizarPedidoServicio.getInstancia().func_NAZCA_CORE_Registrar(pedido);
+                RealizarPedidoServicio.getInstancia().registrar(pedido);
             } else {
                 Persona cliente = new Persona(idCliente);
                 pedido.setUsuario(usuario);
                 pedido.setCliente(cliente);
-                RealizarPedidoServicio.getInstancia().func_NAZCA_CORE_Registrar(pedido);
+                RealizarPedidoServicio.getInstancia().registrar(pedido);
 
             }
 

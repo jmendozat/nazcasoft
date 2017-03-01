@@ -26,7 +26,7 @@ public class Index extends GestionarAdministrativoComando {
         Persona persona = (Persona) request.getSession().getAttribute("sesUsuario");
         if (persona != null) {
             try {
-                List<Interface> listaInterface = GestionarInterfaceServicio.getInstancia().func_NAZCA_ADM_ObtenerModulosPorUsuario(persona.getCodigo());
+                List<Interface> listaInterface = GestionarInterfaceServicio.getInstancia().obtenerModulosPorUsuario(persona.getCodigo());
                 request.setAttribute("listInterface", listaInterface);
                 
                 

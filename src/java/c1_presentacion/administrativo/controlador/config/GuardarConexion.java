@@ -8,7 +8,7 @@ package c1_presentacion.administrativo.controlador.config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import c2_aplicacion.administrativo.servicio.GestionarConexion;
-import c3_dominio.administrativo.entidad.Conexion;
+import c5_transversal.seguridad.EConexion;
 
 /**
  *
@@ -21,13 +21,13 @@ public class GuardarConexion extends ConfiguracionComando{
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
         String ruta="Logout?hr=exit";
         try {
-            Conexion conexion = new Conexion(request.getParameter("tusuario").trim(),
+            EConexion conexion = new EConexion(request.getParameter("tusuario").trim(),
                     request.getParameter("tpassword").trim(),
                     request.getParameter("tservidor").trim(),
                     request.getParameter("tpuerto").trim(),
                     request.getParameter("tbased").trim(),
                     request.getParameter("tfabrica").trim());
-            GestionarConexion.getInstancia().func_NAZCA_ADM_Editar(conexion);
+            GestionarConexion.getInstancia().editar(conexion);
         } catch (Exception e) {
         }
         return ruta;

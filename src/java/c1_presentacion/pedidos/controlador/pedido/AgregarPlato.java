@@ -29,7 +29,7 @@ public class AgregarPlato extends GestionarPedidoComando {
             return url_forward;
         }
         try {
-            Plato plato = GestionarPlatoServicio.getInstancia().func_NAZCA_CRUD_Buscar(platoid);
+            Plato plato = GestionarPlatoServicio.getInstancia().buscar(platoid);
             Pedido pedido = (Pedido) request.getSession().getAttribute("pedido");
             pedido.agregarLineaDePedido(plato, cantidad);
         } catch (ExcepcionSQL e) {

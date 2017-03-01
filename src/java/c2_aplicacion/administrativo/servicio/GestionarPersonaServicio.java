@@ -37,10 +37,10 @@ public class GestionarPersonaServicio {
         personaDAO = fabricaAdministrativo.crearPersonaDAO(gestorJDBC);
     }
 
-    public int func_NAZCA_ADM_CLIENTE_Crear(Persona persona) throws ExcepcionSQL {
+    public int crearPersona(Persona persona) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            int resultado = personaDAO.func_NAZCA_ADM_CLIENTE_Crear(persona);
+            int resultado = personaDAO.crearPersona(persona);
             gestorJDBC.cerrarConexion();
             return resultado;
         } catch (ExcepcionSQL e) {
@@ -49,10 +49,10 @@ public class GestionarPersonaServicio {
         }
     }
 
-    public List<Persona> func_NAZCA_ADM_CLIENTE_Buscar(String nombre) throws ExcepcionSQL {
+    public List<Persona> buscar(String nombre) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            List<Persona> listaPersona = personaDAO.func_NAZCA_ADM_CLIENTE_Buscar(nombre);
+            List<Persona> listaPersona = personaDAO.buscar(nombre);
             gestorJDBC.cerrarConexion();
             return listaPersona;
         } catch (ExcepcionSQL e) {
@@ -61,19 +61,19 @@ public class GestionarPersonaServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Crear(Persona objCrud) throws ExcepcionSQL {
+    public void crear(Persona objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void func_NAZCA_CRUD_Editar(Persona objCrud) throws ExcepcionSQL {
+    public void editar(Persona objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void func_NAZCA_CRUD_Eliminar(Persona objCrud) throws ExcepcionSQL {
+    public void eliminar(Persona objCrud) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Persona func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Persona buscar(int id) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

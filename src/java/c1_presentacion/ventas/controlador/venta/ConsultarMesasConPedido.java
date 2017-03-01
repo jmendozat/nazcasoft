@@ -23,7 +23,7 @@ public class ConsultarMesasConPedido extends GestionarVentaComando {
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
         String url_forward = "/WEB-INF/c1_presentacion/ventas/view/pago/PageBuscarMesas.jsp";
         try {
-            List<Mesa> listaMesas = GestionarMesaServicio.getInstancia().func_NAZCA_ADM_PEDIDOS_MESA_Listar();
+            List<Mesa> listaMesas = GestionarMesaServicio.getInstancia().listar();
             request.setAttribute("listaMesas", listaMesas);
         } catch (ExcepcionSQL e) {
             request.setAttribute("mensaje", e.getMessage());

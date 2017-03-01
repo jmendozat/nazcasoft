@@ -17,28 +17,29 @@ import c5_transversal.excepciones.ExcepcionSQL;
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
 public class GestionarPermisoServicio {
+
     GestorJDBC gestorJDBC;
     IPermisoDAO permisoDAO;
     private static GestionarPermisoServicio instancia;
-    
-    public static GestionarPermisoServicio getInstancia(){
-     if(instancia==null)
-         instancia = new GestionarPermisoServicio();
-     return instancia;
+
+    public static GestionarPermisoServicio getInstancia() {
+        if (instancia == null) {
+            instancia = new GestionarPermisoServicio();
+        }
+        return instancia;
     }
 
     public GestionarPermisoServicio() {
         FabricaAdministrativoDAO fabricaAdministrativoDAO = FabricaAdministrativoDAO.getInstancia();
         gestorJDBC = fabricaAdministrativoDAO.crearGestorJDBC();
         permisoDAO = fabricaAdministrativoDAO.crearPermisoDAO(gestorJDBC);
-                
+
     }
 
-    
-    public void func_NAZCA_CRUD_Crear(Permiso permiso) throws ExcepcionSQL {
+    public void crear(Permiso permiso) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            permisoDAO.func_NAZCA_CRUD_Crear(permiso);
+            permisoDAO.crear(permiso);
             gestorJDBC.cerrarConexion();
         } catch (ExcepcionSQL e) {
             gestorJDBC.cerrarConexion();
@@ -46,19 +47,16 @@ public class GestionarPermisoServicio {
         }
     }
 
-    
-    public void func_NAZCA_CRUD_Editar(Permiso permiso) throws ExcepcionSQL {
+    public void editar(Permiso permiso) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public void func_NAZCA_CRUD_Eliminar(Permiso permiso) throws ExcepcionSQL {
+    public void eliminar(Permiso permiso) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public Permiso func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Permiso buscar(int id) throws ExcepcionSQL {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -37,10 +37,10 @@ public final class GestionarPlatoServicio {
         platoDAO = fabricaPedidosDAO.crearPlatoDAO(gestorJDBC);
     }
 
-    public List<Plato> func_NAZCA_PEDIDO_BuscarPlatoPorNombre(String nombre) throws ExcepcionSQL {
+    public List<Plato> buscarPlatoPorNombre(String nombre) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            List<Plato> listaPlatos = platoDAO.func_NAZCA_PEDIDO_BuscarPlatoPorNombre(nombre);
+            List<Plato> listaPlatos = platoDAO.buscarPlatoPorNombre(nombre);
             gestorJDBC.cerrarConexion();
             return listaPlatos;
         } catch (ExcepcionSQL e) {
@@ -49,11 +49,11 @@ public final class GestionarPlatoServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Crear(Plato plato) throws ExcepcionSQL, ExcepcionRegla {
+    public void crear(Plato plato) throws ExcepcionSQL, ExcepcionRegla {
         try {
             gestorJDBC.abrirConexion();
             plato.validarPrecio();
-            platoDAO.func_NAZCA_CRUD_Crear(plato);
+            platoDAO.crear(plato);
             gestorJDBC.cerrarConexion();
         } catch (ExcepcionSQL | ExcepcionRegla e) {
             gestorJDBC.cerrarConexion();
@@ -61,11 +61,11 @@ public final class GestionarPlatoServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Editar(Plato plato) throws ExcepcionSQL, ExcepcionRegla {
+    public void editar(Plato plato) throws ExcepcionSQL, ExcepcionRegla {
         try {
             gestorJDBC.abrirConexion();
             plato.validarPrecio();
-            platoDAO.func_NAZCA_CRUD_Editar(plato);
+            platoDAO.editar(plato);
             gestorJDBC.cerrarConexion();
         } catch (ExcepcionSQL | ExcepcionRegla e) {
             gestorJDBC.cerrarConexion();
@@ -73,10 +73,10 @@ public final class GestionarPlatoServicio {
         }
     }
 
-    public void func_NAZCA_CRUD_Eliminar(Plato plato) throws ExcepcionSQL {
+    public void eliminar(Plato plato) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            platoDAO.func_NAZCA_CRUD_Eliminar(plato);
+            platoDAO.eliminar(plato);
             gestorJDBC.cerrarConexion();
         } catch (ExcepcionSQL e) {
             gestorJDBC.cerrarConexion();
@@ -84,10 +84,10 @@ public final class GestionarPlatoServicio {
         }
     }
 
-    public Plato func_NAZCA_CRUD_Buscar(int id) throws ExcepcionSQL {
+    public Plato buscar(int id) throws ExcepcionSQL {
         try {
             gestorJDBC.abrirConexion();
-            Plato plato = platoDAO.func_NAZCA_CRUD_Buscar(id);
+            Plato plato = platoDAO.buscar(id);
             gestorJDBC.cerrarConexion();
             return plato;
         } catch (ExcepcionSQL e) {
