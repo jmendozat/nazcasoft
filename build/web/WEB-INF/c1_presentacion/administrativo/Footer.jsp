@@ -8,10 +8,12 @@
 <!-- footer content -->
 <div class="footer">
     <div class="pull-right">
-        Version <strong>1.0</strong> Beta
+        Version <strong>2.1</strong> Beta
     </div>
     <div>
-        <strong>Copyright</strong> NazcaSoft by <a href="#">Laín Cardenas</a> &copy; 2014-2015
+        <strong>Copyright</strong> NazcaSoft by <a href="#">Laín Cardenas</a> &copy; 2014-2017 
+        <strong>Autor:</strong> <a href="#">Valentin Mendoza</a> &copy; 2016-2017 
+
     </div>
 </div>
 <!-- /footer content -->

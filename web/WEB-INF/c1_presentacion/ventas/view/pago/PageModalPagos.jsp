@@ -61,16 +61,11 @@
                         <input type="text" id="idPMonto" class="form-control" placeholder="Monto"  size="10"/>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <span>Vuelto</span>
-                    <h5 class="font-bold">
-                        <table><tr><td>S/</td><td id="idvuelto"></td></tr></table>
-                    </h5>
-                </div>
+               
             </div>
 
             <span class="text-muted small">
-                *Ingrese el monto recibido y gestione el vuelto para el  cliente.
+                *Ingrese el monto, registre la venta y obtenga el vuelto.
             </span><br />
             <label class="error small" id="MsgError">
 
@@ -82,10 +77,3 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $('#idbtnPagar').attr('disabled', true);
-        func_obtenerMonto();
-    });
-
-</script>

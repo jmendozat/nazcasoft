@@ -39,7 +39,9 @@
                         <div id="tab-verpedido" class="tab-pane">
                             <div class="panel-body">
                                 <div id="idContItemPedido" style="overflow-y: scroll; height: 250px;">
-
+                                        
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -65,7 +67,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="func_guardarpedido();">Guardar</button>
+            <button type="button" class="btn btn-primary" onclick="func_guardarpedido();" id="btnGuardarPedido">Guardar</button>
         </div>
     </div>
 </div>

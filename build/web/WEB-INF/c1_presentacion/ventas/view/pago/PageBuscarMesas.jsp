@@ -15,29 +15,19 @@
     <tbody>
         <%
             for (Mesa mesa : listaMesas) {
-                if (mesa.isDisponible()) {
+                if (!mesa.isDisponible()) {
         %>
-            <tr>
-                <td><a href="javascript:void(0)" class="client-link" >Mesa <%=mesa.getNumero()%></a></td>
-                <td><%=mesa.getTipoMesa().getNombre()%></td>
-                <td><%=mesa.getTipoMesa().getDescripcion()%></td>
-                <td class="client-status"><span class="<%=mesa.getColor()%>">Disponible</span></td>
-                <td id="idSelect<%=mesa.getMesaid()%>"></td>
-            </tr>
-            <%
-            } else {
-            %>
-            <tr>
-                <td><a href="javascript:void(0)" class="client-link" onclick="met_buscarDetalle(<%=mesa.getMesaid()%>)">Mesa <%=mesa.getNumero()%></a></td>
-                <td><%=mesa.getTipoMesa().getNombre()%></td>
-                <td><%=mesa.getTipoMesa().getDescripcion()%></td>
-                <td class="client-status"><span class="<%=mesa.getColor()%>">Ocupada</span></td>
-                <td id="idSelect<%=mesa.getMesaid()%>"></td>
-            </tr>
-            <%
-                    }
+        <tr>
+            <td><a href="javascript:void(0)" class="client-link" onclick="met_buscarDetalle(<%=mesa.getMesaid()%>)">Mesa <%=mesa.getNumero()%></a></td>
+            <td><%=mesa.getTipoMesa().getNombre()%></td>
+            <td><%=mesa.getTipoMesa().getDescripcion()%></td>
+            <td class="client-status"><span class="<%=mesa.getColor()%>">Ocupada</span></td>
+            <td id="idSelect<%=mesa.getMesaid()%>"></td>
+        </tr>
+        <%
                 }
-            %>
+            }
+        %>
 
     </tbody>
 </table>

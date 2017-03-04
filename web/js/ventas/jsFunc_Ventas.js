@@ -85,7 +85,6 @@ function func_vModalPago() {
 
 function func_obtenerMonto() {
     var monto=0.0;
-
     $('#idPMonto').keyup(function (event) {
         monto = $("#idPMonto").val();
         calcVuelto(monto);
@@ -110,7 +109,11 @@ function calcVuelto(monto) {
 };
 function func_guardarVenta() {
     var monto = $("#idPMonto").val();
-    $.ajax({
+    var totalPedido= $('#idTotalPedido').val();
+    var vuelto;
+    if(monto >= totalPedido){
+        vuelto = monto-totalPedido;
+          $.ajax({
         type: "GET",
         url: "GuardarVenta?monto="+monto,
         contentType: "application/json; charset=utf-8",
@@ -118,7 +121,7 @@ function func_guardarVenta() {
         success: function (data) {
             $('#idModalPagos').modal('toggle');
             $('#idContDetalleBoleta').html("");
-            swal("NazcaSoft", "Se ha generado esta venta.", "success");
+            swal("NazcaSoft", "Se ha generado esta venta. El vuelto para el cliente es de S/"+vuelto, "success");
             met_buscarMesas(); 
         },
         error: function (result) {
@@ -126,5 +129,9 @@ function func_guardarVenta() {
         }
     });
 
+    }else{
+        $('#MsgError').text("El monto ingresado no supera al total."); 
+    }
+  
 }
 ;

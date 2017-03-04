@@ -44,6 +44,7 @@ function func_vModalNewPedido(idmesa) {
             alert("Error: " + result);
         }
     });
+    $('#btnGuardarPedido').attr('disabled', true);
 }
 ;
 function func_MostrarItemsPlato() {
@@ -70,7 +71,7 @@ function func_BuscarClientes() {
     $("#idProgresBarCliente").show();
     $.ajax({
         type: "GET",
-        url: "ConsultarClientes?descCliente="+descCliente,
+        url: "ConsultarClientes?descCliente=" + descCliente,
         contentType: "application/json; charset=utf-8",
         async: false,
         success: function (data) {
@@ -167,23 +168,29 @@ function func_calsubtotal() {
 
 function addPlatoPedido(idPlato) {
     var cantidad = parseInt($("#idcant" + idPlato).val());
-    if (cantidad > 0) {
-        $.ajax({
-            type: "GET",
-            url: "AgregarPlato?platoid=" + idPlato + "&cantidad=" + cantidad,
-            contentType: "application/json; charset=utf-8",
-            async: false,
-            success: function (data) {
-                alert("Se agrego un nuevo plato al pedido");
-                $("#idcant" + idPlato).val("");
-                $(".subtotal").html("");
-            },
-            error: function (result) {
-                alert("Error: " + result);
-            }
-        });
-    } else {
-        alert("Ingrese la cantidad adecuada");
+    var estadoplato = $('#estadoPlato'+idPlato).text();
+    if (estadoplato !== 'AGOTADO') {
+        if (cantidad >= 1 && cantidad <= 15) {
+            $.ajax({
+                type: "GET",
+                url: "AgregarPlato?platoid=" + idPlato + "&cantidad=" + cantidad,
+                contentType: "application/json; charset=utf-8",
+                async: false,
+                success: function (data) {
+                    alert("Se agrego un nuevo plato al pedido");
+                    $("#idcant" + idPlato).val("");
+                    $(".subtotal").html("");
+                },
+                error: function (result) {
+                    alert("Error: " + result);
+                }
+            });
+            $('#btnGuardarPedido').attr('disabled', false);
+        } else {
+            alert('Debe agregar una cantidad entre 1 y 15 por cada plato del pedido.');
+        }
+    }else{
+        alert('Este plato esta AGOTADO');
     }
 }
 ;
@@ -230,6 +237,7 @@ function func_quitarPlatoPedido(idplatoitem) {
             }
         });
         func_MostrarItemsPlato();
+        estadoBotonGuardar();
     }
 }
 ;
@@ -254,7 +262,7 @@ function func_DetallePlatos() {
 ;
 
 function func_Modguardarpedido() {
-        $.ajax({
+    $.ajax({
         type: "GET",
         url: "GuardarPedido?idCliente=0",
         contentType: "application/json; charset=utf-8",
@@ -267,15 +275,19 @@ function func_Modguardarpedido() {
         error: function (result) {
             alert("Error: " + result);
         }
-    }); 
- 
+    });
+
 }
 ;
 function func_guardarpedido() {
     var idCliente = $('#idIdAntCli').val();
+    if (typeof (idCliente) === "undefined") {
+        idCliente = 4;
+    }
+
     $.ajax({
         type: "GET",
-        url: "GuardarPedido?idCliente="+idCliente,
+        url: "GuardarPedido?idCliente=" + idCliente,
         contentType: "application/json; charset=utf-8",
         async: false,
         success: function (data) {
@@ -361,10 +373,19 @@ function func_confirmarpedido() {
 }
 ;
 
-function func_agregarid(idCliente){
+function func_agregarid(idCliente) {
     $('#idIdAntCli').val('');
-  $('#idIdAntCli').val(idCliente);  
-};
+    $('#idIdAntCli').val(idCliente);
+}
+;
 
+
+function estadoBotonGuardar() {
+    if ($('#itemsplatos').find('div').length <= 0) {
+        $('#btnGuardarPedido').attr('disabled', true);
+    } else {
+        $('#btnGuardarPedido').attr('disabled', false);
+    }
+}
 
 

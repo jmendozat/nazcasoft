@@ -17,8 +17,7 @@
                 <div class="tabs-left">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#tab-addPlatos"><i class="fa fa-cutlery"></i>Buscar Platos</a></li>
-                        <li class=""><a data-toggle="tab" href="#tab-verpedido" class="tabItemPedido"><i class="fa fa-shopping-cart"></i>Ver el Pedido</a></li>                       
-                        <li class=""><a data-toggle="tab" href="#tab-verClientes" class="tabItemCliente"><i class="fa fa-user"></i>Agregar Cliente</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-verpedido" class="tabItemPedido"><i class="fa fa-shopping-cart"></i>Ver el Pedido</a></li>               
                     </ul>
                     <div class="tab-content ">
                         <div id="tab-addPlatos" class="tab-pane active">
@@ -43,21 +42,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="tab-verClientes" class="tab-pane">
-                            <div class="panel-body">
-                                <div class="input-group">
-                                    <input type="text" placeholder="Buscar clientes " class="input form-control" id="idTxtDescCliente">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn btn-primary" onclick="func_BuscarClientes();"> <i class="fa fa-search"></i> Buscar</button>
-                                    </span>
-                                </div>
-                                <br>
-                                <div id="idProgresBarCliente"></div>
-                                <div id="idContResultClientes" style="overflow-y: scroll; height: 250px;">
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -65,7 +49,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="func_Modguardarpedido();">Guardar</button>
+            <button type="button" class="btn btn-primary" onclick="func_Modguardarpedido();" id="btnGuardarPedido">Guardar</button>
         </div>
     </div>
 </div>

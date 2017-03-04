@@ -79,7 +79,7 @@ public class LineaDePedido {
      * @throws Exception 
      */
     private void validarCantidad(int cantidadSolicitada) throws Exception{
-        if(cantidadSolicitada < 1 || cantidadSolicitada > 15)
+        if(cantidadSolicitada < 1)
             throw ExcepcionRegla.crearErrorCantidadInvalida();
     }
     
