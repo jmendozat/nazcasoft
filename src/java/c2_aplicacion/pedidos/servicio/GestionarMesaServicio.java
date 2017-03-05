@@ -9,7 +9,7 @@ import java.util.List;
 import c3_dominio.pedidos.contrato.IMesaDAO;
 import c3_dominio.pedidos.entidad.Mesa;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.pedidos.fabricaDAO.FabricaPedidosDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -32,9 +32,9 @@ public class GestionarMesaServicio {
     }
 
     public GestionarMesaServicio() {
-        FabricaPedidosDAO fabricaPedidosDAO = FabricaPedidosDAO.getInstancia();
-        gestorJDBC = fabricaPedidosDAO.crearGestorJDBC();
-        mesaDAO = fabricaPedidosDAO.crearMesaDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        mesaDAO = fabricaAbstractaDAO.crearMesaDAO(gestorJDBC);
     }
 
     

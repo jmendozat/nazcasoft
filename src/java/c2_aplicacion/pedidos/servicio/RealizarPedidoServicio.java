@@ -10,7 +10,7 @@ import c3_dominio.pedidos.contrato.IPedidoDAO;
 import c3_dominio.pedidos.entidad.Mesa;
 import c3_dominio.pedidos.entidad.Pedido;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.pedidos.fabricaDAO.FabricaPedidosDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionRegla;
 import c5_transversal.excepciones.ExcepcionSQL;
 
@@ -27,7 +27,7 @@ public class RealizarPedidoServicio {
     private static RealizarPedidoServicio instancia;
 
     public RealizarPedidoServicio() {
-        FabricaPedidosDAO fabricaPedidosDAO = FabricaPedidosDAO.getInstancia();
+        FabricaAbstractaDAO fabricaPedidosDAO = FabricaAbstractaDAO.getInstancia();
         gestorJDBC = fabricaPedidosDAO.crearGestorJDBC();
         pedidoDAO = fabricaPedidosDAO.crearPedidoDAO(gestorJDBC);
         mesaDAO = fabricaPedidosDAO.crearMesaDAO(gestorJDBC);

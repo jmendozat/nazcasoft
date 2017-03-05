@@ -8,7 +8,7 @@ package c2_aplicacion.ventas.servicio;
 import c3_dominio.ventas.contrato.IVentaDAO;
 import c3_dominio.ventas.entidad.Venta;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.ventas.fabricaDAO.FabricaVentasDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -31,9 +31,9 @@ public class RealizarVentaServicio {
     }
 
     public RealizarVentaServicio() {
-        FabricaVentasDAO fabricaVentasDAO = FabricaVentasDAO.getInstancia();
-        gestorJDBC = fabricaVentasDAO.crearGestorJDBC();
-        ventaDAO = fabricaVentasDAO.crearVentaDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        ventaDAO = fabricaAbstractaDAO.crearVentaDAO(gestorJDBC);
     }
 
     public void registrar(Venta venta) throws ExcepcionSQL {

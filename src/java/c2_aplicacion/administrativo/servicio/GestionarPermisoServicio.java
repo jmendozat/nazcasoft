@@ -8,7 +8,7 @@ package c2_aplicacion.administrativo.servicio;
 import c3_dominio.administrativo.contrato.IPermisoDAO;
 import c3_dominio.administrativo.entidad.Permiso;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.administrativo.fabricaDAO.FabricaAdministrativoDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -30,9 +30,9 @@ public class GestionarPermisoServicio {
     }
 
     public GestionarPermisoServicio() {
-        FabricaAdministrativoDAO fabricaAdministrativoDAO = FabricaAdministrativoDAO.getInstancia();
-        gestorJDBC = fabricaAdministrativoDAO.crearGestorJDBC();
-        permisoDAO = fabricaAdministrativoDAO.crearPermisoDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        permisoDAO = fabricaAbstractaDAO.crearPermisoDAO(gestorJDBC);
 
     }
 

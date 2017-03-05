@@ -9,7 +9,7 @@ import c3_dominio.pedidos.contrato.IPlatoDAO;
 import c3_dominio.pedidos.entidad.Plato;
 import java.util.List;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.pedidos.fabricaDAO.FabricaPedidosDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionRegla;
 import c5_transversal.excepciones.ExcepcionSQL;
 
@@ -32,9 +32,9 @@ public final class GestionarPlatoServicio {
     }
 
     public GestionarPlatoServicio() {
-        FabricaPedidosDAO fabricaPedidosDAO = FabricaPedidosDAO.getInstancia();
-        gestorJDBC = fabricaPedidosDAO.crearGestorJDBC();
-        platoDAO = fabricaPedidosDAO.crearPlatoDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        platoDAO = fabricaAbstractaDAO.crearPlatoDAO(gestorJDBC);
     }
 
     public List<Plato> buscarPlatoPorNombre(String nombre) throws ExcepcionSQL {

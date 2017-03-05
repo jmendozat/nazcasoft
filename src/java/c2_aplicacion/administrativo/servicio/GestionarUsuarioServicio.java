@@ -13,7 +13,7 @@ import c3_dominio.administrativo.entidad.Permiso;
 import c3_dominio.administrativo.entidad.Persona;
 import c3_dominio.administrativo.entidad.Usuario;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.administrativo.fabricaDAO.FabricaAdministrativoDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -38,11 +38,11 @@ public class GestionarUsuarioServicio {
     }
 
     public GestionarUsuarioServicio() {
-        FabricaAdministrativoDAO fabricaAdministrativoDAO = FabricaAdministrativoDAO.getInstancia();
-        gestorJDBC = fabricaAdministrativoDAO.crearGestorJDBC();
-        usuarioDAO = fabricaAdministrativoDAO.crearUsuarioDAO(gestorJDBC);
-        personaDAO = fabricaAdministrativoDAO.crearPersonaDAO(gestorJDBC);
-        permisoDAO = fabricaAdministrativoDAO.crearPermisoDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        usuarioDAO = fabricaAbstractaDAO.crearUsuarioDAO(gestorJDBC);
+        personaDAO = fabricaAbstractaDAO.crearPersonaDAO(gestorJDBC);
+        permisoDAO = fabricaAbstractaDAO.crearPermisoDAO(gestorJDBC);
     }
 
     public Persona login(Usuario usuario) throws ExcepcionSQL {

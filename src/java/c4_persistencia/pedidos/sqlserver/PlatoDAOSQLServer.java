@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class PlatoDAOPostgre implements IPlatoDAO {
+public class PlatoDAOSQLServer implements IPlatoDAO {
 
     GestorJDBC gestorJDBC;
 
-    public PlatoDAOPostgre(GestorJDBC gestorJDBC) {
+    public PlatoDAOSQLServer(GestorJDBC gestorJDBC) {
         this.gestorJDBC = gestorJDBC;
     }
 
@@ -50,7 +50,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
         } catch (SQLException ex) {
-            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaPlatos;
     }
@@ -71,7 +71,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
         } catch (SQLException ex) {
-            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,7 +92,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
         } catch (SQLException ex) {
-            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -112,7 +112,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorEliminar();
         } catch (SQLException ex) {
-            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -131,7 +131,7 @@ public class PlatoDAOPostgre implements IPlatoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
         } catch (SQLException ex) {
-            Logger.getLogger(PlatoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlatoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return plato;
     }

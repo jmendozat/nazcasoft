@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package c4_persistencia.ventas.sqlserver;
+package c4_persistencia.fabricaDAO;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import c4_persistencia.GestorJDBC;
 import c5_transversal.excepciones.ExcepcionSQL;
-import c5_transversal.propiedades.LectorPropiedades;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
- * @author Lain
+ * @author <AdvanceSoft - Mendoza Torres Valentin - valentin2512jeses@gmail.com>
  */
-public class VentasConexionPostgreSQL extends GestorJDBC {
+public class ConexionSQLServer extends GestorJDBC {
 
     @Override
     public void abrirConexion() throws ExcepcionSQL {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://" + LectorPropiedades.getInstancia().getServidor() + "database=" + LectorPropiedades.getInstancia().getBaseDeDatos() + "user=" + LectorPropiedades.getInstancia().getUserDB() + "password=" + LectorPropiedades.getInstancia().getPasswordDB() + "encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+            String url = "jdbc:sqlserver://yfbhz1zuj2.database.windows.net:1433;database=bdnazca;user=Administrador;password=Password*123;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
             conexion = DriverManager.getConnection(url);
         } catch (ClassNotFoundException | SQLException e) {
             throw ExcepcionSQL.crearErrorAbrirConexion();

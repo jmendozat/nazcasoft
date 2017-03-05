@@ -23,11 +23,11 @@ import java.util.logging.Logger;
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class MesaDAOPostgre implements IMesaDAO {
+public class MesaDAOSQLServer implements IMesaDAO {
 
     GestorJDBC gestorJDBC;
 
-    public MesaDAOPostgre(GestorJDBC gestorJDBC) {
+    public MesaDAOSQLServer(GestorJDBC gestorJDBC) {
         this.gestorJDBC = gestorJDBC;
     }
 
@@ -55,7 +55,7 @@ public class MesaDAOPostgre implements IMesaDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
         } catch (SQLException ex) {
-            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MesaDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaMesas;
     }
@@ -81,7 +81,7 @@ public class MesaDAOPostgre implements IMesaDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorEliminar();
         } catch (SQLException ex) {
-            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MesaDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -108,7 +108,7 @@ public class MesaDAOPostgre implements IMesaDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
         } catch (SQLException ex) {
-            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MesaDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mesa;
     }
@@ -143,7 +143,7 @@ public class MesaDAOPostgre implements IMesaDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
         } catch (SQLException ex) {
-            Logger.getLogger(MesaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MesaDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -20,11 +20,11 @@ import java.util.logging.Logger;
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class VentaDAOPostgre implements IVentaDAO {
+public class VentaDAOSQLServer implements IVentaDAO {
 
     GestorJDBC gestorJDBC;
 
-    public VentaDAOPostgre(GestorJDBC gestorJDBC) {
+    public VentaDAOSQLServer(GestorJDBC gestorJDBC) {
         this.gestorJDBC = gestorJDBC;
     }
 
@@ -56,7 +56,7 @@ public class VentaDAOPostgre implements IVentaDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
         } catch (SQLException ex) {
-            Logger.getLogger(VentaDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentaDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

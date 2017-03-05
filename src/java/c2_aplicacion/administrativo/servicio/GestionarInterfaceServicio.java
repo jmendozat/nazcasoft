@@ -9,7 +9,7 @@ import java.util.List;
 import c3_dominio.administrativo.contrato.IInterfaceDAO;
 import c3_dominio.administrativo.entidad.Interface;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.administrativo.fabricaDAO.FabricaAdministrativoDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -30,9 +30,9 @@ public class GestionarInterfaceServicio{
     }
 
     public GestionarInterfaceServicio() {
-        FabricaAdministrativoDAO fabricaAdministrativoDAO = FabricaAdministrativoDAO.getInstancia();
-        gestorJDBC = fabricaAdministrativoDAO.crearGestorJDBC();
-        interfaceDAO = fabricaAdministrativoDAO.crearInterfaceDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        interfaceDAO = fabricaAbstractaDAO.crearInterfaceDAO(gestorJDBC);
     }
 
     

@@ -9,7 +9,7 @@ import java.util.List;
 import c3_dominio.administrativo.contrato.IPersonaDAO;
 import c3_dominio.administrativo.entidad.Persona;
 import c4_persistencia.GestorJDBC;
-import c4_persistencia.administrativo.fabricaDAO.FabricaAdministrativoDAO;
+import c4_persistencia.fabricaDAO.FabricaAbstractaDAO;
 import c5_transversal.excepciones.ExcepcionSQL;
 
 /**
@@ -32,9 +32,9 @@ public class GestionarPersonaServicio {
     }
 
     public GestionarPersonaServicio() {
-        FabricaAdministrativoDAO fabricaAdministrativo = FabricaAdministrativoDAO.getInstancia();
-        gestorJDBC = fabricaAdministrativo.crearGestorJDBC();
-        personaDAO = fabricaAdministrativo.crearPersonaDAO(gestorJDBC);
+        FabricaAbstractaDAO fabricaAbstractaDAO = FabricaAbstractaDAO.getInstancia();
+        gestorJDBC = fabricaAbstractaDAO.crearGestorJDBC();
+        personaDAO = fabricaAbstractaDAO.crearPersonaDAO(gestorJDBC);
     }
 
     public int crearPersona(Persona persona) throws ExcepcionSQL {

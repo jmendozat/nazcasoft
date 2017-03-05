@@ -25,11 +25,11 @@ import java.util.logging.Logger;
  * @author
  * <AdvanceSoft - Mendoza Torres Valentin - advancesoft.trujillo@gmail.com>
  */
-public class PedidoDAOPostgre implements IPedidoDAO {
+public class PedidoDAOSQLServer implements IPedidoDAO {
 
     GestorJDBC gestorJDBC;
 
-    public PedidoDAOPostgre(GestorJDBC gestorJDBC) {
+    public PedidoDAOSQLServer(GestorJDBC gestorJDBC) {
         this.gestorJDBC = gestorJDBC;
     }
 
@@ -99,7 +99,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorConsultar();
         } catch (SQLException ex) {
-            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pedido;
     }
@@ -148,7 +148,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorInsertar();
         } catch (SQLException ex) {
-            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -181,7 +181,7 @@ public class PedidoDAOPostgre implements IPedidoDAO {
         } catch (ExcepcionSQL e) {
             throw ExcepcionSQL.crearErrorModificar();
         } catch (SQLException ex) {
-            Logger.getLogger(PedidoDAOPostgre.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAOSQLServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
