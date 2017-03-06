@@ -111,7 +111,7 @@ function func_guardarVenta() {
     var monto = $("#idPMonto").val();
     var totalPedido= $('#idTotalPedido').val();
     var vuelto;
-    if(monto >= totalPedido){
+    if(totalPedido <= monto && monto >=totalPedido){
         vuelto = monto-totalPedido;
           $.ajax({
         type: "GET",
